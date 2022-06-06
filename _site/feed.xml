@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-07T03:51:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog</title><subtitle></subtitle><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><entry><title type="html">Intro</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="Intro" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<p><br />
+<br /></p>
+<h2 id="intro">Intro</h2>
+
+<p><br />
+안녕하세요!</p>
+
+<p><br /></p>
+
+<hr />
+
+<h2 id="history">History</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th style="text-align: center">2022</th>
+      <th style="text-align: right"> </th>
+    </tr>
+    <tr>
+      <th>MONTH</th>
+      <th style="text-align: center">WHAT DID I DO</th>
+      <th style="text-align: right">💖</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>January</strong></td>
+      <td style="text-align: center">IT기업 취업</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td><strong>May</strong></td>
+      <td style="text-align: center">정보처리기사 취득</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td><strong>December</strong></td>
+      <td style="text-align: center">SQLD 취득</td>
+      <td style="text-align: right"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="what-can-i-do">What can i do</h2>
+
+<ul>
+  <li>JAVA</li>
+  <li>PostgreSql</li>
+  <li>Oracle</li>
+  <li>SpringFramework
+    <ul>
+      <li>Egov</li>
+      <li>Springboot</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><summary type="html"><![CDATA[Intro]]></summary></entry></feed>
