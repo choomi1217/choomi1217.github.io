@@ -20,7 +20,7 @@ title                    : "o_omi My Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "choomi"
-description              : "choomi o_omi"
+description              : "<img src='../images/2022-06-06-first/blog_icon.jpg'  width='200' height='400'/> "
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "choomi o_omi"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "<br> 내가 책임 져야하는 삶 <br> **나를 믿어요** <br> <br>"
+  bio              : "<br> A person who takes responsibility <br> for one's own life <br> **Trust Myself** <br> <br>"
   location         : "in my sweet home"
   email            : "whdudal1217@naver.com"
   links:
