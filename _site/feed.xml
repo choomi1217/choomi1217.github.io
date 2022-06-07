@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-07T11:08:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog</title><subtitle></subtitle><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><entry><title type="html">Second</title><link href="http://localhost:4000/second/" rel="alternate" type="text/html" title="Second" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/second</id><content type="html" xml:base="http://localhost:4000/second/"><![CDATA[]]></content><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Intro</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="Intro" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<p><br />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-08T04:45:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog</title><subtitle></subtitle><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><entry><title type="html">Second</title><link href="http://localhost:4000/second/" rel="alternate" type="text/html" title="Second" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/second</id><content type="html" xml:base="http://localhost:4000/second/"><![CDATA[<h3 id="스프링-부트와-aws로-혼자-구현하는-웹-서비스---1일차">스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 1일차</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories{
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+</code></pre></div></div>
+
+<h4 id="ext">ext</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- build.gradle에서 사용하는 전역변수를 설정하겠다는 의미
+- springBootVersion 전역변수를 생성하고 그 값을 '2.1.7.RELEASE'로 하겠다
+</code></pre></div></div>
+
+<p>repositories 중 
+‘jcenter’ is deprecated</p>
+
+<p><code class="language-plaintext highlighter-rouge">jcenter</code>는 mavenCentral의 단점인 라이브러리 업로드의 복잡성을 개선한 저장소입니다.
+하지만 지금은 보안 문제로 사용 X</p>
+
+<p><code class="language-plaintext highlighter-rouge">repositories</code>는 각종 의존성들을 어떤 원격 저장소에서 받을지 결정
+<code class="language-plaintext highlighter-rouge">mavenCentral()</code>을 많이 사용</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apply plugins: 'java'
+apply plugins: 'eclipse'
+apply plugins: 'org.springframework.boot'
+apply plugins: 'io.spring.dependency-management'
+</code></pre></div></div>
+
+<p>앞서 선언한 플러그인 의존성들을 적용할 것인지 결정하는 코드</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apply plugins: 'io.spring.dependency-management'
+</code></pre></div></div>
+<p>이 플러그인은 스프링 부트의 의존성들을 관리해 주는 플러그인</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+</code></pre></div></div>
+<p>교재 상에선 
+compile 이라고 쓰여있지만 implementation으로</p>
+
+<p>완성된 build.gradle</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories{
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+//        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id "org.springframework.boot" version "2.7.0"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation('org.springframework.boot:spring-boot-starter-websocket:2.6.7')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+group 'com.edu.book'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+</code></pre></div></div>
+
+<p>git commit은 생략</p>
+
+<hr />]]></content><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><summary type="html"><![CDATA[스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 1일차]]></summary></entry><entry><title type="html">Intro</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="Intro" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<p><br />
 <br /></p>
 <h2 id="intro">Intro</h2>
 
