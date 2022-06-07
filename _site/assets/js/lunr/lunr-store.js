@@ -5,6 +5,12 @@ var store = [{
         "url": "/first/",
         "teaser": "/assets/images/blog_icon.jpg"
       },{
+        "title": "Second",
+        "excerpt":" ","categories": [],
+        "tags": [],
+        "url": "/second/",
+        "teaser": "/assets/images/blog_icon.jpg"
+      },{
     "title": null,
     "excerpt":"","url": "http://localhost:4000/"
   },{
