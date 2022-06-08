@@ -15,7 +15,7 @@
 minimal_mistakes_skin    : "default" #"sunrise" ,"air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", 
 
 # Site Settings
-locale                   : "ko_KR"
+locale                   : "ko"
 title                    : "Blog"
 title_separator          : "|"
 subtitle                 : "o_omi"
@@ -34,7 +34,7 @@ comments:
   disqus:
     shortname            : "o_omi"
   discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+    server               : https://choomi1217.github.io # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
     appid                :
@@ -105,10 +105,12 @@ analytics:
 # Site Author
 author:
   name             : "choomi o_omi"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/blog_icon.jpg"
   bio              : "<br> A person who takes responsibility <br> for one's own life <br> **Trust Myself** <br> <br>"
   location         : "in my sweet home"
   email            : "whdudal1217@naver.com"
+  instagram        : "o_omi1217"
+  github           : "choomi1217"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
