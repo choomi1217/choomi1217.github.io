@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-08T04:45:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog</title><subtitle></subtitle><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><entry><title type="html">Second</title><link href="http://localhost:4000/second/" rel="alternate" type="text/html" title="Second" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/second</id><content type="html" xml:base="http://localhost:4000/second/"><![CDATA[<h3 id="스프링-부트와-aws로-혼자-구현하는-웹-서비스---1일차">스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 1일차</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-06-08T14:02:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog</title><subtitle></subtitle><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><entry><title type="html">Spring boot 2</title><link href="http://localhost:4000/Spring-Boot-2/" rel="alternate" type="text/html" title="Spring boot 2" /><published>2022-06-08T00:00:00+09:00</published><updated>2022-06-08T00:00:00+09:00</updated><id>http://localhost:4000/Spring%20Boot-2</id><content type="html" xml:base="http://localhost:4000/Spring-Boot-2/"><![CDATA[<h2 id="springboot의-시작점-만들기">SpringBoot의 시작점 만들기</h2>
+
+<h4 id="applicationjava">Application.java</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class,args);
+    }
+}
+</code></pre></div></div>
+<h4 id="springbootapplication-의-기능">@springBootApplication 의 기능</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 스프링 부트의 자동설정
+- 스프링 Bean 읽기와 생성을 모두 자동으로
+- 이 어노테이션이 있는 부분부터 설정을 읽음
+	- 고로 이 클래스는 항상 프로젝트 최상단에 위치해야함.
+</code></pre></div></div>
+
+<h4 id="springapplicaionrun">SpringApplicaion.run</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- main에서 실행하는 이 메소드가 내장WAS를 실행합니다.
+	- 내장WAS : 
+		- WAS를 외부에 두지 않음
+		- 톰캣 설치 필요가 없어짐
+		- JAR 파일 실행
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="hellojava">Hello.java</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@RestController
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello";
+    }
+}
+</code></pre></div></div>
+<h4 id="restcontroller">@RestController</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- 컨트롤러를 JSON을 반환하는 컨트롤러로 생성 #### @GetMapping
+- Get Method
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="junit-을-사용한-테스트-코드">JUnit 을 사용한 테스트 코드</h2>
+
+<p>테스트 코드 작성을 도와주는 프레임워크중 하나인 
+xUnit을 사용</p>
+
+<hr />
+
+<p>JUnit 5부터는 @RunWith가 아닌 Extension이라는 일관된 방법을 통해 테스트를 실행하는 방법을 커스터 마이징 하는 것이다. 
+사용법은 @RunWith와 비슷하게 @ExtendWith라는 애노테이션을 사용해서 @ExtendWith(MyExtension.class)처럼  Extension 구현체를 지정
+@ExtendWith 는 메타어노테이션으로 다른 어노테이션에 포함될 수 있는 어노테이션이므로
+@ExtendWith 를 포함한 어떤 어노테이션이 설정되어 있다면 @ExtendWith 를 생략 할 수 있다.</p>]]></content><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><summary type="html"><![CDATA[SpringBoot의 시작점 만들기]]></summary></entry><entry><title type="html">Spring boot 1</title><link href="http://localhost:4000/Spring-Boot-1/" rel="alternate" type="text/html" title="Spring boot 1" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/Spring%20Boot-1</id><content type="html" xml:base="http://localhost:4000/Spring-Boot-1/"><![CDATA[<h3 id="스프링-부트와-aws로-혼자-구현하는-웹-서비스---1일차">스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 1일차</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buildscript {
     ext{
@@ -98,7 +152,7 @@ test {
 
 <p>git commit은 생략</p>
 
-<hr />]]></content><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><summary type="html"><![CDATA[스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 1일차]]></summary></entry><entry><title type="html">Intro</title><link href="http://localhost:4000/first/" rel="alternate" type="text/html" title="Intro" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/first</id><content type="html" xml:base="http://localhost:4000/first/"><![CDATA[<p><br />
+<hr />]]></content><author><name>choomi o_omi</name><email>whdudal1217@naver.com</email></author><summary type="html"><![CDATA[스프링 부트와 AWS로 혼자 구현하는 웹 서비스 - 1일차]]></summary></entry><entry><title type="html">Intro</title><link href="http://localhost:4000/intro/" rel="alternate" type="text/html" title="Intro" /><published>2022-06-06T00:00:00+09:00</published><updated>2022-06-06T00:00:00+09:00</updated><id>http://localhost:4000/intro</id><content type="html" xml:base="http://localhost:4000/intro/"><![CDATA[<p><br />
 <br /></p>
 <h2 id="intro">Intro</h2>
 
