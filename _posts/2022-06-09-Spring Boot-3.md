@@ -49,17 +49,14 @@ JUnit 5부터는 @RunWith가 아닌 Extension이라는 일관된 방법을 통�
 	
 - mvc.perform( get("/hello") )
 	- MockMvc를 통해 /hello 주소로 HTTP GET 요청
+	- perform 메소드로 테스트 할 url을 설정
 	- 체이닝 지원
+	- DispatcherServlet에 요청을 의뢰하는 역할을 한다.
+	- MockMvcRequestBuilder클래스를 사용해 설정한 요청 데이터를 perform()의 인수로 전달한다.
+	- get, post, put, delete, fileUpload 와 같은 메서드를 제공한다.
+	- ResultActions 이라는 인터페이스를 반환한다.
 
-
-
-
-
-
-
-
-
-
+- perform 메소드로 테스트 할 url을 설정했다면 이 url이 요청할 데이터 또한 설정할 수 있다.
 ---
 
 ## 체이닝 테스트 코드
@@ -112,9 +109,21 @@ public class TestPeaple {
 
 return으로 자신을 객체로 해서 돌려주면 체이닝 객체생성 할 수 있음
 
-집에 가서 마저 작성하기! 
+---
 
-https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/
+## Test코드 작성하면서 사용한 라이브러리
 
-으윽...잘래...
+JUnit5: 자바 단위 테스트를 위한 테스팅 프레임워크
+AssertJ: 자바 테스트를 돕기 위해 다양한 문법을 지원하는 라이브러리
+
+---
+
+## 단위 테스트의 패턴
+
+- given/when/then 패턴
+given-when-then 패턴이란 1개의 단위 테스트를 3가지 단계로 나누어 처리하는 패턴으로, 각각의 단계는 다음을 의미한다.
+
+given(준비): 어떠한 데이터가 준비되었을 때
+when(실행): 어떠한 함수를 실행하면
+then(검증): 어떠한 결과가 나와야 한다.
 
