@@ -42,12 +42,12 @@ JUnit 5부터는 @RunWith가 아닌 Extension이라는 일관된 방법을 통�
 	- 시큐리티, 필터까지 자동으로 테스트하며, 수동으로 추가/삭제 가능.
 	- Application Context 완전하게 Start 시키지 않고 web layer를 테스트 하고 싶을 때
 
-- org.springframework.test.web.servlet.MockMvc
+- org.springframework.test.web.servlet.`MockMvc`
 	- 웹 API 테스트시 이용
 	- 스프링 MVC 테스트의 시작점
 	- 이 클래스를 통해 HTTP GET, POST ... 등 API 테스트
 	
-- mvc.perform( get("/hello") )
+- `mvc.perform( get("/hello") )`
 	- MockMvc를 통해 /hello 주소로 HTTP GET 요청
 	- perform 메소드로 테스트 할 url을 설정
 	- 체이닝 지원
@@ -56,7 +56,29 @@ JUnit 5부터는 @RunWith가 아닌 Extension이라는 일관된 방법을 통�
 	- get, post, put, delete, fileUpload 와 같은 메서드를 제공한다.
 	- ResultActions 이라는 인터페이스를 반환한다.
 
-- perform 메소드로 테스트 할 url을 설정했다면 이 url이 요청할 데이터 또한 설정할 수 있다.
+- class MockHttpServletRequestBuilder의 `perform()`
+	- url이 요청할 데이터 설정.
+		- param / params
+			- 요청 파라미터 설정
+		- header / headers
+			- 요청 해더 설정
+	- DispatcherServlet에 요청을 의뢰하는 역할을 한다.
+	- get, post, put, delete, fileUpload 와 같은 메서드를 제공한다.
+	- `ResultActions` 이라는 인터페이스를 반환한다.
+- `ResultActions` 인터페이스
+	- andDo()
+		- log(), print() 둘 중 하나만 인자로 받는 메서드
+		- 실행결과 출력 해줍니다. 
+			- log() : 디버깅 레벨에서의 실행결과 출력
+			- print() : MockHttpServletRequest, MockHttpServletResponse, Handler 등의 실행결과를 출력
+	- andExpect()
+		- 인자에 MockMvcResultMatchers에서 제공하는 ResultMatcher를 받는 메서드
+		- HTTP 상태코드 등 굉장히 많은 ResultMatcher들이 있으니 사용할 때마다 확인 바람.
+	- andReturn()
+		- return 결과를 반환
+ 
+[참고](https://codecrafting.tistory.com/2)
+
 ---
 
 ## 체이닝 테스트 코드
