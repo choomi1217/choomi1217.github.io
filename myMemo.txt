@@ -134,3 +134,7 @@ nextStep - tdd
 		
 궁금한 점이 있는데..
 모델앤뷰 말고도 html을 반환하는 방법이 있어요??
+
+---
+
+https://catch-me-java.tistory.com/49rr
