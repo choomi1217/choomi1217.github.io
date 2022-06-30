@@ -28,12 +28,12 @@
     }
 ```
 
-
-
-
-
-
+2. Set 컬렉션을 이용한 JUnit 공부
+	- BeforeEach
+	- ParameterizedTest
+	-CsvSource
 ```
+
 public class SetTest {
     private Set<Integer> numbers;
 
@@ -51,18 +51,24 @@ public class SetTest {
         assertThat(numbers.size()).isEqualTo(3);
     }
 
+    @DisplayName("Parameterized를 테스트 해본다")
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    void contains(int input) {
+    void usingParameterized(int input) {
         assertThat(numbers.contains(input)).isTrue();
     }
 
-    @Test
+    @DisplayName("CsvSource를 테스트 해본다")
     @ParameterizedTest
     @CsvSource(value = {"1,2,3:true" , "4,5:false"}, delimiter = ':')
-    void name(String input, String expect) {
-
-        assertThat(numbers.contains(Integer.parseInt(input))).isEqualTo(Boolean.getBoolean(expect));
+    void usingCsv(String input, boolean expect) {
+        String[] testCaseString = input.split(",");
+        Set<Integer> testCaseInteger = new HashSet<>();
+        for(int i=0; i < testCaseString.length; i++){
+            testCaseInteger.add(Integer.valueOf(testCaseString[i]));
+        }
+        assertThat(numbers.containsAll(testCaseInteger)).isEqualTo(expect);
     }
 }
+
 ```
