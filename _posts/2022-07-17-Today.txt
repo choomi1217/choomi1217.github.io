@@ -1,0 +1,12 @@
+2022-07-15
+
+오늘의 개발
+
+시도 리스트를 매번 쿼리를 통해 가져오는게 생각보다 문제가 있다고 판단했다.
+그냥 쿼리도 아니다 조건절에 서브스트링까지 DB를 잘 알지는 못하지만 DB를 공부하며 DB에 좋지 않은 문장들만 가득한 쿼리였다.
+그래서 오늘은 JAVA로 ENUM을 만들었다.
+
+var test = Arrays.stream(Sido.values())
+            .collect(Collectors.toMap(Function.identity(), value -> Map.of("cd", value.getSidoCd(), "korNm", value.getCtpKorNm())));
+
+        System.out.println(test);
