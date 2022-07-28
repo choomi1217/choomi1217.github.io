@@ -6,7 +6,7 @@
 	- public static void main
 
 - alt + insert
-	- generate 
+	- generate file
 
 - ctrl + o
 	- override method generate
