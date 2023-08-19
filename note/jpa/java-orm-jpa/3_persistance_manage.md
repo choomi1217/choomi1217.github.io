@@ -2,7 +2,7 @@
 
 ### 엔티티 매니저 팩토리와 엔티티 매니저
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2f83e761-a6e6-4bac-972e-5a65f0a98eed/Untitled.png)
+![Untitled](./image/3/3_1.png)
 
 두개의 엔티티매니저를 생성했음에도 하나는 DB 커넥션을 사용하고 하나는 DB 커넥션을 사용하지 않습니다.
 
@@ -23,7 +23,7 @@ JPA 구현체들은 EntityManagerFactory를 생성할 때 DB 커넥션 풀을 �
 - 준영속 : 영속성 컨텍스트에 저장 되었다가 분리된 상태
 - 삭제 : 엔티티가 삭제된 상태
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0500fcce-6468-4821-8a7f-8522d6d6e4c4/Untitled.png)
+![Untitled](./image/3/3_2.png)
 
 ### 영속성 컨텍스트의 특징
 
@@ -60,7 +60,7 @@ em.persist(member);
 
 JPA는 1차 캐시를 이용한 **반복 가능한 읽기** 의 트랜잭션을 애플리케이션 차원에서 제공합니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a55b10c8-e598-4b60-86c2-d26625d07839/Untitled.png)
+![Untitled](./image/3/3_3.png)
 
 ### 2. 1차 캐시에서 조회
 
@@ -70,13 +70,13 @@ Member findMember = em.find(Member.class, id);
 
 em.find()를 호출하면 먼저 1차 캐시에서 엔티티를 찾고 1차 캐시에 없으면 DB에서 조회합니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a574f4a2-95fe-4b37-9584-d9ec85fba87e/Untitled.png)
+![Untitled](./image/3/3_4.png)
 
 ### 3. DB 조회
 
 만약 `em.find()` 했을 때 1차 캐시에 엔티티가 없으면 **DB를 조회해서 엔티티를 생성 후 캐시에 저장하고 영속 상태의 엔티티를 리턴합니다.**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4db54f9f-0e09-4ffe-8e43-ae757178aaaf/Untitled.png)
+![Untitled](./image/3/3_5.png)
 
 ### 영속 엔티티의 동일성 보장
 
@@ -152,11 +152,11 @@ tx.commit();
 emf.close();
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dc1ad1df-8310-4088-ae74-aba388aadd61/Untitled.png)
+![Untitled](./image/3/3_6.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/37a46b3c-e85a-41d7-b741-070ee0248def/Untitled.png)
+![Untitled](./image/3/3_7.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ebe1d943-2763-4e31-a49c-cd7a78e08ad3/Untitled.png)
+![Untitled](./image/3/3_8.png)
 
 1. `memberA` 를 영속 컨텍스트에 **영속화** 합니다.
 2. 영속성 컨텍스트가 영속화된 `memberA` 를 1차 캐시에 저장함과 동시에 `memberA` 의 insert SQL을 생성해 저장소에 저장합니다.
@@ -240,7 +240,7 @@ Hibernate:
         id=?
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d1488f12-bcc2-457c-b575-cbc9782d18b0/Untitled.png)
+![Untitled](./image/3/3_9.png)
 
 1. 사용자가 트랜잭션 커밋하면 엔티티 매니저가 flush() 를 호출합니다.
 2. 엔티티와 스냅샷을 비교합니다.
@@ -378,11 +378,11 @@ Hibernate:
         nextval ('hibernate_sequence')
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dfe3ee0a-18dd-403e-ad0f-c8e0dee6686a/Untitled.png)
+![Untitled](./image/3/3_10.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d3ad4596-9fe8-44f8-8c90-72f610c24ab6/Untitled.png)
+![Untitled](./image/3/3_11.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3de90e95-684d-404a-8ffb-6e9c24a901b8/Untitled.png)
+![Untitled](./image/3/3_12.png)
 
 ### 병합
 
@@ -473,7 +473,7 @@ Entity Manager has MERGED ? true
 FIND AFTER MERGED MEMBER NAME '조영미'
 ```
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6f69b1f-62ff-4d7b-9cad-7458e8391df4/Untitled.png)
+![Untitled](./image/3/3_13.png)
 
 1. `merge(member)` 를 실행합니다.
 2. 준영속 엔티티의 `@Id` 로 1차 캐시에서 엔티티를 찾습니다.
