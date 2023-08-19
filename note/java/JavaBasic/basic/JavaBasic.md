@@ -36,4 +36,4 @@ public calss Setting{
 4. main 메소드가 종료되면, 이에 해당하는 스택 프레임이 스택에서 제거(pop)됩니다. 이 스택 프레임에 있던 setting1과 setting2 레퍼런스 변수도 메모리에서 해제됩니다. 더 이상 Setting 객체를 가리키는 참조가 없게 되므로, 이 객체들은 가비지 컬렉션의 대상이 될 수 있습니다.
 
 
-![메모리의 흐름](./javaBasic.png)
+![메모리의 흐름](javaBasic.png)
