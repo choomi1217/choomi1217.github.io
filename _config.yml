@@ -12,11 +12,11 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" #"sunrise" ,"air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", 
+minimal_mistakes_skin    : "default" #"sunrise" ,"air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum",
 
 # Site Settings
 locale                   : "ko"
-title                    : "Blog"
+title                    : "o_omi"
 title_separator          : "|"
 subtitle                 : "o_omi"
 name                     : "choomi"
@@ -24,8 +24,8 @@ description              : ""
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/images/blog_icon.jpg"
-logo                     : "/assets/images/blog_icon.jpg"
+teaser                   : "/assets/images/blog_icon_ver2.jpeg"
+logo                     : "/assets/images/blog_icon_ver2.jpeg"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
