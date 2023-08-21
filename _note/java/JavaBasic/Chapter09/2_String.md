@@ -1,0 +1,21 @@
+### 🤔문자열 리터럴
+
+`"Hello World"` 는 문자열 리터럴로 컴파일 시 클래스 파일(StringClass.class)에 저장되고 하나의 인스턴스를 공유합니다.
+
+```java
+public class StringClass {
+    public static void main(String[] args) {
+        String hello1 = "Hello World";
+        String hello2 = "Hello World";
+        String hi1 = new String("Hi World");
+        String hi2 = new String("Hi World");
+        System.out.println(hello1 == hello2);
+        System.out.println(hi1 == hi2);
+    }
+}
+
+-----
+true
+false
+-----
+```
