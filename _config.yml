@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" #"sunrise" ,"air", "aqua", "contrast", "dar
 locale                   : "ko"
 title                    : "o_omi"
 title_separator          : "|"
-subtitle                 : ""
+subtitle                 : "o_omi"
 name                     : "o_omi"
 description              : ""
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -106,8 +106,8 @@ analytics:
 author:
   name             : "o_omi"
   avatar           : "/assets/images/blog_icon_ver2.jpeg"
-  bio              : "<br> A person who takes responsibility <br> for one's own life <br> **Trust Myself** <br> <br>"
-  location         : "in my sweet home"
+  bio              : "<br> A person who takes responsibility <br> for one's own life<br>"
+  location         : "Seoul, Korea"
   email            : "whdudal1217@naver.com"
   instagram        : "o_omi1217"
   github           : "choomi1217"
@@ -233,6 +233,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-archive
 
 # mimic GitHub Pages with --safe
 whitelist:
