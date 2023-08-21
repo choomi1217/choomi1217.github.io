@@ -19,7 +19,7 @@ locale                   : "ko"
 title                    : "o_omi"
 title_separator          : "|"
 subtitle                 : "o_omi"
-name                     : "choomi"
+name                     : "o_omi"
 description              : ""
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -104,8 +104,8 @@ analytics:
 
 # Site Author
 author:
-  name             : "choomi o_omi"
-  avatar           : "/assets/images/blog_icon.jpg"
+  name             : "o_omi"
+  avatar           : "/assets/images/blog_icon_ver2.jpeg"
   bio              : "<br> A person who takes responsibility <br> for one's own life <br> **Trust Myself** <br> <br>"
   location         : "in my sweet home"
   email            : "whdudal1217@naver.com"
