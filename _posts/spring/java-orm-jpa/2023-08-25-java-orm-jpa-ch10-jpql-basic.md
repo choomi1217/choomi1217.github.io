@@ -1,5 +1,5 @@
 ---
-title:  "[자바 ORM 표준 JPA] ch10.객체지향 쿼리"
+title:  "[자바 ORM 표준 JPA] ch10.객체지향 쿼리 - 기본편"
 
 categories:
   - spring
@@ -174,4 +174,3 @@ Hibernate:
         **Member member0_ limit ? offset ?**
 ```
 
-### 조인
