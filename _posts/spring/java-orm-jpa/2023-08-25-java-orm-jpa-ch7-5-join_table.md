@@ -26,7 +26,7 @@ last_modified_at: 2023-08-25
 
 - `member` 가 `locker` 를 등록하기 전엔 둘 사이에 관계가 없으므로
   `member` 의 `locker_id` 가 `null` 이 됩니다.
-  이렇게 외래 키에 null 을 허용하는 관계를 [선택적 비식별 관계](2023-08-25-ch7-4-identity_composekey.md)라고 합니다.
+  이렇게 외래 키에 null 을 허용하는 관계를 [선택적 비식별 관계](2023-08-25-java-orm-jpa-ch7-4-identity_composekey.md)라고 합니다.
 
 ![Untitled](../image/7/7_14.png)
 

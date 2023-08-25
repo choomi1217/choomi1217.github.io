@@ -1,12 +1,12 @@
 ---
 title: "Toby's Spring"
 layout: archive
-permalink: categories/toby-spring
+permalink: categories/spring-project
 author_profile: true
 sidebar_main: true
 ---
 
 ***
 
-{% assign posts = site.categories['toby spring'] %}
-{% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
+{% assign posts = site.categories['Spring Project'] %}
+{% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}

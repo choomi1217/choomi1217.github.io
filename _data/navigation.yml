@@ -15,14 +15,14 @@ main:
 
 sidebar-category:
   - title: "About Me"
-    url: /about/
+    url: categories/about/
   - title: "Java"
-    url: /java/
+    url: categories/java/
   - title: "Spring"
-    url: /spring/
+    url: categories/spring/
   - title: "Database"
-    url: /database/
+    url: categories/database/
   - title: "CS"
-    url: /cs/
+    url: categories/cs/
   - title: "Log"
-    url: /log/
+    url: categories/log/

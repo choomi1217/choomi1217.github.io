@@ -4,7 +4,7 @@ title:  "[개발 기록] Configuring the Annotation Processor"
 categories:
   - log
 tags:
-  - [log, spring-log]
+  - [spring-log]
 
 toc: true
 toc_sticky: true
