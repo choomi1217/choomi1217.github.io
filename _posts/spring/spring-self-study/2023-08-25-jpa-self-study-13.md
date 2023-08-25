@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] ThymeLeaf & SpringSecurity"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -91,7 +91,7 @@ last_modified_at: 2023-08-25
 </plugin>
 ```
 
-- SpringSecurity 설정도 바꿔줘야 합니다
+spring-self-studySecurity 설정도 바꿔줘야 합니다
 ```java
 @Override  
 public void configure(WebSecurity web) throws Exception {  

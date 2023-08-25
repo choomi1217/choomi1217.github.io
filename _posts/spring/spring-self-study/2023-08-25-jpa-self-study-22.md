@@ -1,8 +1,8 @@
 ---
-title:  "[JPA Self Study] SpringSecurityLogin"
+title:  "[JPA Self Study] Data URL"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -15,8 +15,7 @@ date: 2023-08-25
 last_modified_at: 2023-08-25
 ---
 
-
-# SpringBootJpa 개발 | 8 DAY
+# SpringBootJpa 개발 | 13 DAY - 1
 ```
 하다가 막히는 부분이나 알아야 할 사항, 혹은 버전의 문제 등을 적기 위한 간단한 노트이며
 
@@ -26,18 +25,12 @@ last_modified_at: 2023-08-25
 소스는 깃헙에 올려놓았습니다.
 ```
 
-## Spring-Security Provided Login by default
+## Data URL
 
-Spring Security config
+>  data: 라는 접두어를 가진 URL로 파일을 문서에 내장 시킬때 사용할 수 있다.
+![Data URL](../images/2022/08/17/DataURL1.png)
 
-```java
-http.formLogin()  
-    .loginPage("/login")  
-    .permitAll();  
-  
-http.logout()  
-    .logoutSuccessUrl("/");
-```
+이 문자열 자체를 DB에 저장하고 나중에 조회 할 때도 이 문자열을 가져오면 이미지로 볼 수 있습니다.
 
-하지만 로그인 부분은 db 조회하는 과정이 있어야 하므로 유저정보를 조회하는 부분을 만들어야 하는데 `UserDetailsService` 를 implements해서 `loadUserByUsername`를 만듭니다.
+[Data URL MDN doc](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)
 

@@ -2,9 +2,9 @@
 title:  "[자바 ORM 표준 JPA] ch6.다양한 연관관계 매핑 - 일대다"
 
 categories:
-  - spring
+  java-orm-jpa
 tags:
-  - [spring-orm-jpa]
+  - [java-orm-jpa]
 
 toc: true
 toc_sticky: true

@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] Field injection Not Recommended"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 

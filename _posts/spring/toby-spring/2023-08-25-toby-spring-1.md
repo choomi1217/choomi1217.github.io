@@ -2,7 +2,7 @@
 title:  "[Toby Spring 3.1] 초난감 DAO"
 
 categories:
-  - spring
+  - toby-spring
 tags:
   - [toby-spring]
 

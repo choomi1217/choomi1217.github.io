@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] FlashAttribute"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 

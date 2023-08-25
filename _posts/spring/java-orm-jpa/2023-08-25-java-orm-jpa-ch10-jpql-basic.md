@@ -2,9 +2,9 @@
 title:  "[자바 ORM 표준 JPA] ch10.객체지향 쿼리 - 기본편"
 
 categories:
-  - spring
+  java-orm-jpa
 tags:
-  - [spring-orm-jpa]
+  - [java-orm-jpa]
 
 toc: true
 toc_sticky: true

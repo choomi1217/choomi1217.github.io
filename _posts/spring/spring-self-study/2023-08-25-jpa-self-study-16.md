@@ -1,8 +1,8 @@
 ---
-title:  "[JPA Self Study] FormBackingObject"
+title:  "[JPA Self Study] SpringSecurityLogin"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -15,7 +15,8 @@ date: 2023-08-25
 last_modified_at: 2023-08-25
 ---
 
-# SpringBootJpa 개발 | 3 DAY - 1
+
+# SpringBootJpa 개발 | 8 DAY
 ```
 하다가 막히는 부분이나 알아야 할 사항, 혹은 버전의 문제 등을 적기 위한 간단한 노트이며
 
@@ -25,15 +26,18 @@ last_modified_at: 2023-08-25
 소스는 깃헙에 올려놓았습니다.
 ```
 
-### FormBackingObject
+## Spring-Security Provided Login by default
 
-Html Form을 채우려고 사용하는 객체
+Spring Security config
 
 ```java
-@GetMapping(SETTINGS_NOTIFICATION_URL)  
-public String updateNotificationForm(@CurrentUser Account account, Model model){  
-  model.addAttribute(new Notification(account));  
-    model.addAttribute(account);  
-    return SETTINGS_NOTIFICATION_VIEW;  
-}
+http.formLogin()  
+    .loginPage("/login")  
+    .permitAll();  
+  
+http.logout()  
+    .logoutSuccessUrl("/");
 ```
+
+하지만 로그인 부분은 db 조회하는 과정이 있어야 하므로 유저정보를 조회하는 부분을 만들어야 하는데 `UserDetailsService` 를 implements해서 `loadUserByUsername`를 만듭니다.
+

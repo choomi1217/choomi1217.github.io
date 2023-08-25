@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] Fetch Type EAGER"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 

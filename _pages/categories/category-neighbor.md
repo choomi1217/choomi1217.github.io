@@ -1,12 +1,12 @@
 ---
-title: "이펙티브 자바"
+title: "neighbor project"
 layout: archive
-permalink: categories/effective-java
+permalink: categories/spring-project
 author_profile: true
 sidebar_main: true
 ---
 
 ***
 
-{% assign posts = site.categories['effective-java'] %}
+{% assign posts = site.categories['neighbor'] %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}

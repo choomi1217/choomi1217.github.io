@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] AccountBeanValidation"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 

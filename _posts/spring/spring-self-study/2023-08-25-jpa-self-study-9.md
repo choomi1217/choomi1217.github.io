@@ -1,8 +1,8 @@
 ---
-title:  "[JPA Self Study] Account Email Athenticate"
+title:  "[JPA Self Study] AccountController Refactoring"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -14,7 +14,6 @@ breadcrumbs: true
 date: 2023-08-25
 last_modified_at: 2023-08-25
 ---
-
 
 # SpringBootJpa 개발 | 5 DAY - 1
 ```
@@ -37,38 +36,41 @@ Email을 통해 Token을 인증하는 과정에서 DB에 저장된 내 정보에
 문제가 생긴 로직입니다.
 
 **1. processNewAccount**
-```Java
-public void processNewAccount(SignUpForm signUpForm) {  
-    Account newAccount = saveNewAccount(signUpForm);  
-    newAccount.generateEmailCheckToken();  
-    sendSignUpConfirmEmail(newAccount);  
-}
+```java
+public void processNewAccount(SignUpForm signUpForm) {
+  Account newAccount = saveNewAccount(signUpForm);
+  newAccount.generateEmailCheckToken();
+  sendSignUpConfirmEmail(newAccount);
+  }
 ```
+
 **2. saveNewAccount**
-```Java
-private Account saveNewAccount(SignUpForm signUpForm) {  
-    Account account = Account.builder()  
-        .email(signUpForm.getEmail())  
-        .nickname(signUpForm.getNickname())  
-        .password(passwordEncoder.encode(signUpForm.getPassword()))  
-        .studyCreatedByWeb(true)  
-        .studyEnrollmentResultByWeb(true)  
-        .studyUpdatedByWeb(true)  
-        .build();  
-  
-    return accountRepository.save(account);  
-}
+```java
+private Account saveNewAccount(SignUpForm signUpForm) {
+  Account account = Account.builder()
+  .email(signUpForm.getEmail())
+  .nickname(signUpForm.getNickname())
+  .password(passwordEncoder.encode(signUpForm.getPassword()))
+  .studyCreatedByWeb(true)
+  .studyEnrollmentResultByWeb(true)
+  .studyUpdatedByWeb(true)
+  .build();
+
+  return accountRepository.save(account);
+  }
 ```
+
 **3. sendSignUpConfirmEmail**
-```Java
-private void sendSignUpConfirmEmail(Account newAccount) {  
-    SimpleMailMessage mailMessage = new SimpleMailMessage();  
-    mailMessage.setTo(newAccount.getEmail());  
-    mailMessage.setSubject("스터디올래, 회원 가입 인증");  
-    mailMessage.setText("/check-email-token?token="+ newAccount.getEmailCheckToken()+"&email="+ newAccount.getEmail());  
-    javaMailSender.send(mailMessage);  
-}
+```java
+private void sendSignUpConfirmEmail(Account newAccount) {
+  SimpleMailMessage mailMessage = new SimpleMailMessage();
+  mailMessage.setTo(newAccount.getEmail());
+  mailMessage.setSubject("스터디올래, 회원 가입 인증");
+  mailMessage.setText("/check-email-token?token="+ newAccount.getEmailCheckToken()+"&email="+ newAccount.getEmail());
+  javaMailSender.send(mailMessage);
+  }
 ```
+
 1. ``` saveNewAccount(signUpForm) ```으로 저장 후
 2.  ```newAccount.generateEmailCheckToken();  ``` 으로 토큰을 생성
 3. ``` sendSignUpConfirmEmail(newAccount); ``` 회원가입 인증 메일 전송
@@ -86,12 +88,13 @@ private void sendSignUpConfirmEmail(Account newAccount) {
 2번을 나온 1번에선 Detached 상태입니다.
 
 1번에서도 Persistent 상태를 유지하려면 **@Transactional** 을 붙이면 됩니다.
+
 ```java
-@Transactional  
-public void processNewAccount(SignUpForm signUpForm) {  
-    Account newAccount = saveNewAccount(signUpForm);  
-    newAccount.generateEmailCheckToken();  
-    sendSignUpConfirmEmail(newAccount);  
+@Transactional
+public void processNewAccount(SignUpForm signUpForm) {
+    Account newAccount = saveNewAccount(signUpForm);
+    newAccount.generateEmailCheckToken();
+    sendSignUpConfirmEmail(newAccount);
 }
 ```
 
@@ -101,24 +104,24 @@ public void processNewAccount(SignUpForm signUpForm) {
 
 TestCode 보완해서 다시 테스트했습니다.
 ```java
-@DisplayName("회원 가입 처리 - 입력값 정상")  
-@Test  
-void signUpSubmit_with_correct_input() throws Exception {  
-  
-  mockMvc.perform(post("/sign-up")  
-          .param("nickname","oomi")  
-          .param("email","whdudal1217@naver.com")  
-          .param("password","1234578910")  
-          .with(csrf()))  
-      .andExpect(status().is3xxRedirection())  
-      .andExpect(view().name("redirect:/"));  
-  
-  Account account = accountRepository.findByEmail("whdudal1217@naver.com");  
-  
-  assertThat(account).isNotNull();  
-  assertThat(account.getPassword()).isNotEqualTo("1234578910");  
-  assertThat(account.getEmailCheckToken()).isNotNull();  
-  then(javaMailSender).should().send(any(SimpleMailMessage.class));  
+@DisplayName("회원 가입 처리 - 입력값 정상")
+@Test
+void signUpSubmit_with_correct_input() throws Exception {
+
+  mockMvc.perform(post("/sign-up")
+          .param("nickname","oomi")
+          .param("email","whdudal1217@naver.com")
+          .param("password","1234578910")
+          .with(csrf()))
+      .andExpect(status().is3xxRedirection())
+      .andExpect(view().name("redirect:/"));
+
+  Account account = accountRepository.findByEmail("whdudal1217@naver.com");
+
+  assertThat(account).isNotNull();
+  assertThat(account.getPassword()).isNotEqualTo("1234578910");
+  assertThat(account.getEmailCheckToken()).isNotNull();
+  then(javaMailSender).should().send(any(SimpleMailMessage.class));
 }
 ```
 

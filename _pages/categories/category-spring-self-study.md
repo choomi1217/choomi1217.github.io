@@ -1,12 +1,12 @@
 ---
-title: "자바 ORM 표준 JPA"
+title: "혼자 공부해보기"
 layout: archive
-permalink: categories/spring-orm-jpa
+permalink: categories/spring-self-study
 author_profile: true
 sidebar_main: true
 ---
 
 ***
 
-{% assign posts = site.categories['Spring JPA'] %}
+{% assign posts = site.categories['spring-self-study'] %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}

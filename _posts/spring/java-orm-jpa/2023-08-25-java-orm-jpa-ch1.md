@@ -2,9 +2,9 @@
 title:  "[자바 ORM 표준 JPA] ch1.JPA 소개"
 
 categories:
-  - spring
+  - java-orm-jpa
 tags:
-  - [spring-orm-jpa]
+  - [java-orm-jpa]
 
 toc: true
 toc_sticky: true

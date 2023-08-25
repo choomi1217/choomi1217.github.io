@@ -14,24 +14,30 @@
                     {% if category[0] == "effective-java" %}
                         <li><a href="/categories/effective-java" class="">Effective Java({{category[1].size}})</a></li>
                     {% endif %}
-                    {% if category[0] == "java" %}
-                        <li><a href="/categories/effective-java" class="">Effective Java({{category[1].size}})</a></li>
+                    {% if category[0] == "java-basic" %}
+                        <li><a href="/categories/java-basic" class="">Java Basic({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
         <span class="nav__sub-title">Spring</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "" %}
-                        <li><a href="/categories/algorithm" class="">알고리즘 구현 (with C++) ({{category[1].size}})</a></li>
+                    {% if category[0] == "java-orm-jpa" %}
+                        <li><a href="/categories/java-orm-jpa" class="">java 표준 JPA ({{category[1].size}})</a></li>
+                    {% endif %}
+                    {% if category[0] == "spring-self-study" %}
+                        <li><a href="/categories/spring-self-study" class=""> Spring Self Study ({{category[1].size}})</a></li>
+                    {% endif %}
+                    {% if category[0] == "toby-spring" %}
+                        <li><a href="/categories/toby-spring" class=""> 토비의 스프링 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Unity</span>
+        <span class="nav__sub-title">Log</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Unity Lesson 1" %}
-                        <li><a href="/categories/unity-lesson-1" class="">유니티 강의1 ({{category[1].size}})</a></li>
+                    {% if category[0] == "log" %}
+                        <li><a href="/categories/log" class=""> 개발 기록 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

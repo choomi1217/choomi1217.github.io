@@ -1,8 +1,8 @@
 ---
-title:  "[JPA Self Study] ProfileAnnotation"
+title:  "[JPA Self Study] FormBackingObject"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -15,7 +15,7 @@ date: 2023-08-25
 last_modified_at: 2023-08-25
 ---
 
-# SpringBootJpa 개발 | 3 DAY - 2
+# SpringBootJpa 개발 | 3 DAY - 1
 ```
 하다가 막히는 부분이나 알아야 할 사항, 혹은 버전의 문제 등을 적기 위한 간단한 노트이며
 
@@ -25,18 +25,15 @@ last_modified_at: 2023-08-25
 소스는 깃헙에 올려놓았습니다.
 ```
 
+### FormBackingObject
 
-## @Profile
+Html Form을 채우려고 사용하는 객체
 
-application.properties
-```properties
-spring.profiles.active=local
-```
-
-Java Class File
 ```java
-@Profile("local")
+@GetMapping(SETTINGS_NOTIFICATION_URL)  
+public String updateNotificationForm(@CurrentUser Account account, Model model){  
+  model.addAttribute(new Notification(account));  
+    model.addAttribute(account);  
+    return SETTINGS_NOTIFICATION_VIEW;  
+}
 ```
-
-프로퍼티 파일에 " local " 을 해두고 자바 클래스의``` @Profile ``` 프로필 어노테이션으로 " local " 을 적어두면
-어플리케이션의 런타임 환경을 관리 할 수 있습니다.

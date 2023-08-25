@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] Remember Me"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 

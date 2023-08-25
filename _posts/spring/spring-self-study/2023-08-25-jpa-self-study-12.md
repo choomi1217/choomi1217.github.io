@@ -2,7 +2,7 @@
 title:  "[JPA Self Study] SpringSecurity Login"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -52,7 +52,7 @@ UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationTo
 SecurityContext context = SecurityContextHolder.getContext();  
 context.setAuthentication(token);
 ```
-- Spring Security Test code
+spring-self-study Security Test code
   이렇게 적용한 Spring Security가 정상작동 하는지 확인 하려면 테스트코드를 짜야합니다.
   mockMvc에 SpringSecurity를 지원하는 기능이 있습니다.
 ```java

@@ -1,8 +1,8 @@
 ---
-title:  "[JPA Self Study] MockBean"
+title:  "[JPA Self Study] Bdd Mokito"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -15,7 +15,7 @@ date: 2023-08-25
 last_modified_at: 2023-08-25
 ---
 
-# SpringBootJpa 개발 | 3 DAY - 4
+# SpringBootJpa 개발 | 3 DAY - 5
 ```
 하다가 막히는 부분이나 알아야 할 사항, 혹은 버전의 문제 등을 적기 위한 간단한 노트이며
 
@@ -25,20 +25,11 @@ last_modified_at: 2023-08-25
 소스는 깃헙에 올려놓았습니다.
 ```
 
-### MockBean
-메일이 제대로 보내졌는지 테스트하는 코드를 짜는 과정에서 MockBean을 사용했습니다.
+### BDD Mokito : Behavior Driven Development
+메일에 대한 테스트를 진행 하다가 BDDMokito를 사용
 
-```
-@MockBean  
-JavaMailSender javaMailSender;
+[BDD_Baeldung_도큐 참고](https://www.baeldung.com/bdd-mockito)
 
-... 생략
-
-@DisplayName("메일 처리")  
-@Test  
-void mailTest() throws Exception {
-
-  then(javaMailSender).should().send(any(SimpleMailMessage.class));
-  
-}
-```
+then
+should
+any

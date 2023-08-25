@@ -1,8 +1,8 @@
 ---
-title:  "[JPA Self Study] Bdd Mokito"
+title:  "[JPA Self Study] ProfileAnnotation"
 
 categories:
-  - spring
+  spring-self-study
 tags:
   - [spring-self-study]
 
@@ -15,7 +15,7 @@ date: 2023-08-25
 last_modified_at: 2023-08-25
 ---
 
-# SpringBootJpa 개발 | 3 DAY - 5
+# SpringBootJpa 개발 | 3 DAY - 2
 ```
 하다가 막히는 부분이나 알아야 할 사항, 혹은 버전의 문제 등을 적기 위한 간단한 노트이며
 
@@ -25,11 +25,18 @@ last_modified_at: 2023-08-25
 소스는 깃헙에 올려놓았습니다.
 ```
 
-### BDD Mokito : Behavior Driven Development
-메일에 대한 테스트를 진행 하다가 BDDMokito를 사용
 
-[BDD_Baeldung_도큐 참고](https://www.baeldung.com/bdd-mockito)
+## @Profile
 
-then
-should
-any
+application.properties
+```properties
+spring.profiles.active=local
+```
+
+Java Class File
+```java
+@Profile("local")
+```
+
+프로퍼티 파일에 " local " 을 해두고 자바 클래스의``` @Profile ``` 프로필 어노테이션으로 " local " 을 적어두면
+어플리케이션의 런타임 환경을 관리 할 수 있습니다.
