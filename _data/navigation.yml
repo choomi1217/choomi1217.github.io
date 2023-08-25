@@ -1,12 +1,28 @@
 # main links
 main:
+#  - title: "About Me"
+#    url: /about/
+#  - title: "Java"
+#    url: /java/
+#  - title: "Spring"
+#    url: /spring/
+#  - title: "Database"
+#    url: /database/
+#  - title: "CS"
+#    url: /cs/
+#  - title: "Log"
+#    url: /log/
+
+sidebar-category:
   - title: "About Me"
     url: /about/
   - title: "Java"
     url: /java/
   - title: "Spring"
-    url: /note/
+    url: /spring/
   - title: "Database"
     url: /database/
   - title: "CS"
     url: /cs/
+  - title: "Log"
+    url: /log/
