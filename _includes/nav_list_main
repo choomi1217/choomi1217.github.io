@@ -45,13 +45,21 @@
               {% endfor %}
           </ul>
         <span class="nav__sub-title">Log</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "log" %}
-                        <li><a href="/categories/log" class=""> 개발 기록 ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "log" %}
+                      <li><a href="/categories/log" class=""> 개발 기록 ({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
+        <span class="nav__sub-title">Others</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "git" %}
+                      <li><a href="/categories/git" class=""> git ({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
       </li>
       <!-- <li>
             <br>

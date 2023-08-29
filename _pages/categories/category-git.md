@@ -1,5 +1,5 @@
 ---
-title: "깃에 대해"
+title: "Git"
 layout: archive
 permalink: categories/git
 author_profile: true
