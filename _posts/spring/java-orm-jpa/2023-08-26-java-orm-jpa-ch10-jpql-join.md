@@ -89,7 +89,7 @@ String query = "SELECT t, m FROM Team t JOIN t.members m WHERE t.name = :name";
 ```
 
 ### 세타 조인
-연관관계가 아닌 필드를 이용해 조인을 할 수 있습니다.
+**연관관계가 아닌 필드를 이용해 조인**을 할 수 있습니다.
 이땐 `WHERE` 절을 이용해 조인합니다.
 
 < 코드 >
@@ -134,4 +134,54 @@ member name: teamA
 member's team name: teamD
 joined team name: teamA
 --------------------
+```
+
+### JOIN ON
+**ON 절을 이용해 조인**을 할 수 있습니다.
+```java
+String query = "SELECT m.name, t.name FROM Member m JOIN m.team t ON t.name = :name";
+```
+
+### fetch 조인
+JPQL에서 성능 최적화를 위해 제공하는 기능입니다.
+연관된 엔티티를 한 번에 조회하는 기능입니다.
+
+`Member`의 `Team`을 지연로딩 설정을 해도 `fetch join`을 사용하면 `Member` 조회시 `Team`을 함께 조회합니다.
+프록시가 아닌 실제 엔티티라서 `Member`가 준영속 상태로 분리 되어도 `Team`을 사용할 수 있습니다.
+
+![](./image/10/jpa_fetch_join.png)
+
+< 코드 >
+```java
+String query = "SELECT m FROM Member m JOIN FETCH m.team";
+```
+< 결과 >
+```text
+Hibernate: 
+    select
+        team0_.TEAM_ID as team_id1_4_0_,
+        members1_.MEMBER_ID as member_i1_0_1_,
+        team0_.name as name2_4_0_,
+        members1_.city as city2_0_1_,
+        members1_.street as street3_0_1_,
+        members1_.zipcode as zipcode4_0_1_,
+        members1_.age as age5_0_1_,
+        members1_.name as name6_0_1_,
+        members1_.TEAM_ID as team_id7_0_1_ 
+    from
+        Team team0_ 
+    inner join
+        Member members1_ 
+            on team0_.TEAM_ID=members1_.TEAM_ID 
+    where
+        team0_.name=?
+```
+
+### 컬렉션 fetch 조인
+`Team`을 조회하면 해당된 `Member`들을 함께 조회합니다.
+
+![](./image/10/jpa_collection_fetch_join.png)
+
+```java
+String query = "SELECT t FROM Team t JOIN FETCH t.members WHERE t.name = :name";
 ```
