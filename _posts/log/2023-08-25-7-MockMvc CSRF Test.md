@@ -4,7 +4,7 @@ title:  "[개발 기록] MockMvc CSRF Test"
 categories:
   - log
 tags:
-  - [log, spring-log]
+  - [log]
 
 toc: true
 toc_sticky: true

@@ -4,7 +4,7 @@ title:  "[개발 기록] Spring Servlet"
 categories:
   - log
 tags:
-  - [log, spring-log]
+  - [log]
 
 toc: true
 toc_sticky: true

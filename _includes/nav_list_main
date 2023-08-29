@@ -33,6 +33,17 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">Toy Project</span>
+          <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "neighbor" %}
+                      <li><a href="/categories/neighbor" class=""> 이웃 찾는 사람들 ({{category[1].size}})</a></li>
+                  {% endif %}
+                  {% if category[0] == "real-world" %}
+                      <li><a href="/categories/real-world" class=""> real-world ({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+          </ul>
         <span class="nav__sub-title">Log</span>
             <ul>
                 {% for category in site.categories %}
