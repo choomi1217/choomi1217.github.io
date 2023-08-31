@@ -503,3 +503,148 @@ order id: 9
 member name: kim
 order id: 7
 ```
+
+### 경로 표현식
+`.` 을 찍어 객체 그래프를 탐색하는 것
+- 상태 필드(state field): 단순히 값을 저장하기 위한 필드
+  - 더이상 탐색할 수 없습니다.
+  - ex) m.name, m.age
+- 단일 값 연관 필드(single-valued association field): 연관된 엔티티가 하나인 경우
+  - 내부조인이 묵시적으로 됩니다. **더 탐색할 수 있습니다.**
+  - ex) m.team
+- 연관 필드(association field): 연관관계를 위한 필드
+  - 내부조인이 묵시적으로 되지만 **더이상 탐색은 불가능합니다.** 조인을 통해 별칭을 얻어야 합니다.
+  - ex) m.orders, m.products
+```java
+@Entity
+public class Member {
+    @Id
+    @GeneratedValue
+    @Column(name = "MEMBER_ID")
+    private Long id;
+    private String name;
+    private int age;
+    @Embedded
+    private Address address;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
+    @OneToMany
+    @JoinColumn(name = "MEMBER_ORDER_ID")
+    private List<Order> orders = new ArrayList<Order>();
+
+    @OneToMany
+    @JoinColumn(name = "MEMBER_PRODUCT_ID")
+    private List<Product> products = new ArrayList<Product>();
+}
+```
+### 단일 값 연관 필드
+```java
+public class SingleValue {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
+        EntityManager em = emf.createEntityManager();
+
+        String query = "SELECT m.orders FROM Member m";
+
+        List<Object> resultList = em.createQuery(query, Object.class).getResultList();
+
+        resultList.forEach(o -> {
+            Order order = (Order) o;
+            System.out.println("order id: " + order.getId());
+        });
+
+    }
+}
+```
+```text
+Hibernate: 
+    select
+        orders1_.ORDER_ID as order_id1_1_,
+        orders1_.city as city2_1_,
+        orders1_.street as street3_1_,
+        orders1_.zipcode as zipcode4_1_,
+        orders1_.orderAmount as orderamo5_1_ 
+    from
+        Member member0_ 
+    inner join
+        ORDERS orders1_ 
+            on member0_.MEMBER_ID=orders1_.MEMBER_ORDER_ID
+```
+- `member.address.city` 와 같은 embedded 타입의 필드도 단일 값 연관 필드로 볼 수 있습니다. 하지만 `Member` 테이블에 이미 속해있어서 조인은 일어나지 않습니다.
+- `m.team.name`은 연관 필드이므로 조인이 일어나야 합니다.
+- 그러므로 아래와 같은 쿼리는 총 3개의 테이블이 조인이 됩니다. `Member`, `Team`, `Order`
+![](../java-orm-jpa/image/10/jpql-single-value.png)
+```java
+public class SingleValue {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
+        EntityManager em = emf.createEntityManager();
+
+        String query = "SELECT m.orders FROM Member m where m.name = 'kim' and m.address.city = 'seoul' and m.team.name = 'teamA'";
+
+        List<Object> resultList = em.createQuery(query, Object.class).getResultList();
+
+        resultList.forEach(o -> {
+            Order order = (Order) o;
+            System.out.println("order id: " + order.getId());
+        });
+
+    }
+}
+```
+```text
+Hibernate: 
+    select
+        orders1_.ORDER_ID as order_id1_1_,
+        orders1_.city as city2_1_,
+        orders1_.street as street3_1_,
+        orders1_.zipcode as zipcode4_1_,
+        orders1_.orderAmount as orderamo5_1_ 
+    from
+        Member member0_ 
+    inner join
+        ORDERS orders1_ 
+            on member0_.MEMBER_ID=orders1_.MEMBER_ORDER_ID cross 
+    join
+        Team team2_ 
+    where
+        member0_.TEAM_ID=team2_.TEAM_ID 
+        and member0_.name='kim' 
+        and member0_.city='seoul' 
+        and team2_.name='teamA'
+order id: 1
+order id: 2
+```
+### 컬렉션 값 연관 필드
+- 컬렉션 엔티티에 꼭 별칭을 줘야 합니다.
+- 컬렉션은 경로 탐색의 끝입니다. **꼭 별칭을 통해 명시적 조인을 해야 합니다.**
+```java
+public class CollectionAssociationValue {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
+        EntityManager em = emf.createEntityManager();
+
+        String sql = "SELECT m.name FROM Team t join t.members m WHERE t.name = 'teamA'";
+
+        em.createQuery(sql, String.class).getResultList().forEach(System.out::println);
+    }
+}
+```
+```text
+Hibernate: 
+    select
+        members1_.name as col_0_0_ 
+    from
+        Team team0_ 
+    inner join
+        Member members1_ 
+            on team0_.TEAM_ID=members1_.TEAM_ID 
+    where
+        team0_.name='teamA'
+kang
+kim
+```
+
+### 서브쿼리
