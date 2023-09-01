@@ -648,3 +648,14 @@ kim
 ```
 
 ### 서브쿼리
+
+- `EXIST`
+```java
+private static void exists(EntityManager em) {
+        String query = "SELECT m FROM Member m WHERE EXISTS (SELECT t FROM m.team t WHERE t.name = 'teamA')";
+        List<Member> resultList = em.createQuery(query, Member.class).getResultList();
+        resultList.forEach(member -> {
+            System.out.println("member name: " + member.getName());
+        });
+    }
+```
