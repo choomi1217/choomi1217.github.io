@@ -650,4 +650,17 @@ kim
 ### 서브쿼리
 
 - `[NOT] EXISTS`
+  - 서브쿼리에 결과가 존재하면 참
 `SELECT m FROM Member m WHERE EXISTS (SELECT t FROM m.team t WHERE t.name = 'teamA')`
+
+- ` {ALL | ANY | SOME}`
+  - All : 모두 만족하면 참
+  - ANY, SOME : 같은 의미로 조건을 하나라도 만족하면 참
+
+`SELECT m FROM Member m WHERE m.age > ALL (SELECT a.age FROM Member a)`
+`SELECT m FROM Member m WHERE m.team = ANY (SELECT t FROM Team t)`
+
+- IN 
+  - 서브쿼리 결과 중 하나라도 같은 것이 있으면 참
+`SELECT m FROM Member m WHERE m.team IN (SELECT t FROM Team t)`
+
