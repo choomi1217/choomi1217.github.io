@@ -76,7 +76,7 @@
               <ul>
                  {% for category in site.categories %}
                      {% if category[0] == "goodcode-badcode" %}
-                         <li><a href="/categories/goodcode-badcode" class=""> git ({{category[1].size}})</a></li>
+                         <li><a href="/categories/goodcode-badcode" class=""> 좋은 코드, 나쁜 코드 ({{category[1].size}})</a></li>
                      {% endif %}
                  {% endfor %}
                </ul>
