@@ -19,6 +19,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        <span class="nav__sub-title">DataBase</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "db-performance-advancement" %}
+                        <li><a href="/categories/db-performance-advancement" class="">DB 성능 고도화 원리와 해법({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">Spring</span>
             <ul>
                 {% for category in site.categories %}
@@ -54,12 +62,27 @@
           </ul>
         <span class="nav__sub-title">Others</span>
           <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "git" %}
-                      <li><a href="/categories/git" class=""> git ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
+            <span class="nav__sub-title">CI/CD</span>
+             <ul>
+                 {% for category in site.categories %}
+                     {% if category[0] == "git" %}
+                         <li><a href="/categories/git" class=""> git ({{category[1].size}})</a></li>
+                     {% endif %}
+                 {% endfor %}
+             </ul>
           </ul>
+          <ul>
+            <span class="nav__sub-title">code</span>
+              <ul>
+                 {% for category in site.categories %}
+                     {% if category[0] == "goodcode-badcode" %}
+                         <li><a href="/categories/goodcode-badcode" class=""> git ({{category[1].size}})</a></li>
+                     {% endif %}
+                 {% endfor %}
+               </ul>
+          </ul>
+
+
       </li>
       <!-- <li>
             <br>
