@@ -144,16 +144,16 @@ String query = "SELECT m.name, t.name FROM Member m JOIN m.team t ON t.name = :n
 
 ### fetch 조인
 JPQL에서 성능 최적화를 위해 제공하는 기능입니다.
-연관된 엔티티를 한 번에 조회하는 기능입니다.
+**연관된 엔티티를 한 번에 조회하는 기능입니다.**
 
 `Member`의 `Team`을 지연로딩 설정을 해도 `fetch join`을 사용하면 `Member` 조회시 `Team`을 함께 조회합니다.
-프록시가 아닌 실제 엔티티라서 `Member`가 준영속 상태로 분리 되어도 `Team`을 사용할 수 있습니다.
+프록시가 아닌 실제 엔티티라서 **`Member`가 준영속 상태로 분리 되어도 `Team`을 사용할 수 있습니다.**
 
 ![](./image/10/jpa_fetch_join.png)
 
 < 코드 >
-```java
-String query = "SELECT m FROM Member m JOIN FETCH m.team";
+```jpaql
+SELECT m FROM Member m JOIN FETCH m.team
 ```
 < 결과 >
 ```text
@@ -238,11 +238,11 @@ member name: kim
 --------------------
 ```
 
-### 페치 조이놔 DISTINCT
+### 페치 조인과 DISTINCT
 위 코드에선 `TeamA`가 중복되어 나타났습니다.
 `DISTINCT`를 사용하면 중복을 제거할 수 있습니다.
-```text
-String query = "SELECT DISTINCT t FROM Team t JOIN FETCH t.members WHERE t.name in (:names)";
+```jpaql
+SELECT DISTINCT t FROM Team t JOIN FETCH t.members WHERE t.name in (:names)
 ```
 
 ### 페치조인과 일반조인의 차이 -1
@@ -397,7 +397,8 @@ member name: hong
 ```
 
 ### 둘 이상의 컬렉션을 패치할 수 없다.
-아예 아래와 같은 에러가 나서 시도할 수도 없습니다.
+구현체에 따라서 되는 것도 있지만 컬렉션 * 컬렉션으로 인한 카테시안 곱이 발생합니다.
+하이버네이트로 제가 시도 했을땐 아예 아래와 같은 에러가 나서 시도할 수도 없습니다.
 ```java
 @Entity
 public class Member {
@@ -513,7 +514,7 @@ order id: 7
   - 내부조인이 묵시적으로 됩니다. **더 탐색할 수 있습니다.**
   - ex) m.team
 - 연관 필드(association field): 연관관계를 위한 필드
-  - 내부조인이 묵시적으로 되지만 **더이상 탐색은 불가능합니다.** 조인을 통해 별칭을 얻어야 합니다.
+  - 내부조인이 묵시적으로 되지만 **더이상 탐색은 불가능합니다.** 조인을 통해 별칭을 얻으면 별칭을 통해 탐색할 수 있습니다.
   - ex) m.orders, m.products
 ```java
 @Entity
@@ -619,7 +620,10 @@ order id: 2
 ```
 ### 컬렉션 값 연관 필드
 - 컬렉션 엔티티에 꼭 별칭을 줘야 합니다.
-- 컬렉션은 경로 탐색의 끝입니다. **꼭 별칭을 통해 명시적 조인을 해야 합니다.**
+- 컬렉션은 경로 탐색의 끝입니다. **꼭 별칭을 통해 조인을 해야 합니다.**
+- `SELECT t.members.username FROM Team t` 와 같은 쿼리는 **불가능**합니다.
+- `SELECT m.username FROM Team t join t.members m` 처럼 별칭을 통한 쿼리는 **가능**합니다.
+```java
 ```java
 public class CollectionAssociationValue {
     public static void main(String[] args) {
@@ -648,19 +652,20 @@ kim
 ```
 
 ### 서브쿼리
+JPQL도 일반 SQL 처럼 서브쿼리를 지원하지만 조건절에만 사용 가능합니다.
 
 - `[NOT] EXISTS`
   - 서브쿼리에 결과가 존재하면 참
-`SELECT m FROM Member m WHERE EXISTS (SELECT t FROM m.team t WHERE t.name = 'teamA')`
+  - `SELECT m FROM Member m WHERE EXISTS (SELECT t FROM m.team t WHERE t.name = 'teamA')`
 
-- ` {ALL | ANY | SOME}`
+- `{ALL | ANY | SOME}`
   - All : 모두 만족하면 참
   - ANY, SOME : 같은 의미로 조건을 하나라도 만족하면 참
+  - `SELECT m FROM Member m WHERE m.age > ALL (SELECT a.age FROM Member a)`
+  - `SELECT m FROM Member m WHERE m.team = ANY (SELECT t FROM Team t)`
 
-`SELECT m FROM Member m WHERE m.age > ALL (SELECT a.age FROM Member a)`
-`SELECT m FROM Member m WHERE m.team = ANY (SELECT t FROM Team t)`
-
-- IN 
+- `IN`
   - 서브쿼리 결과 중 하나라도 같은 것이 있으면 참
-`SELECT m FROM Member m WHERE m.team IN (SELECT t FROM Team t)`
+  - `SELECT m FROM Member m WHERE m.team IN (SELECT t FROM Team t)`
+
 
