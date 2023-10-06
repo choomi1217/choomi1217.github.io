@@ -668,4 +668,231 @@ JPQL도 일반 SQL 처럼 서브쿼리를 지원하지만 조건절에만 사용
   - 서브쿼리 결과 중 하나라도 같은 것이 있으면 참
   - `SELECT m FROM Member m WHERE m.team IN (SELECT t FROM Team t)`
 
+- `LIKE`
+- `IS [NOT] NULL`
+- 컬렉션 식
+  - 컬렉션 식으로 컬렉션에만 사용하는 기능입니다.
+  - 컬렉션 타입에 컬렉션 식이 아닌 조건은 사용 불가합니다.
+  - `IS [NOT] EMPTY`
+    - `SELECT m FROM Member m WHERE m.orders IS NOT EMPTY`
+  - `[NOT] MEMBER OF`
+    - `SELECT t FROM Team t WHERE :memberParam MEMBER OF t.members`
 
+### 다형성 쿼리
+JPQL로 부모 엔티티를 조회하면 그 자식 엔티티도 같이 조회합니다.
+
+- Inheritance가 SINGEL_TABLE일 경우엔 `ITEM` 하나만 조회합니다.
+- Inheritance가 JOINED 경우엔 `ITEM`의 자식 엔티티도 조회 됩니다.
+**SINGLE_TABLE**
+```java
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
+@Getter @Setter
+public abstract class Item {
+    @Id
+    @GeneratedValue
+    @Column(name = "ITEM_ID")
+    private Long id;
+    private Integer price;
+    private String name;
+}
+```
+```text
+Hibernate: 
+    select
+        item0_.ITEM_ID as item_id2_0_,
+        item0_.name as name3_0_,
+        item0_.price as price4_0_,
+        item0_.artist as artist5_0_,
+        item0_.author as author6_0_,
+        item0_.director as director7_0_,
+        item0_.DTYPE as dtype1_0_ 
+    from
+        Item item0_
+
+```
+**JOINED**
+```java
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE")
+@Getter @Setter
+public abstract class Item {
+    @Id
+    @GeneratedValue
+    @Column(name = "ITEM_ID")
+    private Long id;
+    private Integer price;
+    private String name;
+}
+```
+
+```text
+Hibernate: 
+    select
+        item0_.ITEM_ID as item_id2_2_,
+        item0_.name as name3_2_,
+        item0_.price as price4_2_,
+        item0_1_.artist as artist1_0_,
+        item0_2_.author as author1_1_,
+        item0_3_.director as director1_4_,
+        item0_.DTYPE as dtype1_2_ 
+    from
+        Item item0_ 
+    left outer join
+        Album item0_1_ 
+            on item0_.ITEM_ID=item0_1_.ITEM_ID 
+    left outer join
+        Book item0_2_ 
+            on item0_.ITEM_ID=item0_2_.ITEM_ID 
+    left outer join
+        Movie item0_3_ 
+            on item0_.ITEM_ID=item0_3_.ITEM_ID
+```
+- `TYPE() IN ()`
+  - 특정 자식 타입의 엔티티만 조회합니다.
+  - `SELECT it FROM Item it WHERE TYPE(it) IN (Book)`
+- `TREAT( a AS b )`
+  - a 가 b 타입으로 캐스팅 됩니다.
+  - `SELECT it FROM Item it WHERE TREAT(it AS Book).author LIKE '%J.K%'`
+
+### 사용자 정의 함수
+- DB에 정의된 함수를 JPA에서 사용할 수 있습니다.
+- JPA설정 파일에 사용할 함수를 등록해야 합니다. JPA에서는 어떤 함수가 DB에 정의되어있는지 모르기 때문입니다.
+  - `org.hibernate.dialect` 해당 클래스를 상속받아 함수를 등록합니다.
+  - `dialect`뜻은 방언입니다. 방언 클래스라고 합니다.
+  - 전 PostgreSQL15를 사용하기 때문에 `PostgreSQL10Dialect` 이 클래스를 상속 받았습니다.
+```java
+public class MyPostgresDialect extends PostgreSQL10Dialect {
+    public MyPostgresDialect(){
+        registerFunction("concat_name", new StandardSQLFunction
+                ("concat_name", StandardBasicTypes.STRING)
+        );
+    }
+}
+```
+- 방언 클래스를 등록합니다.
+```xml
+<property name="hibernate.dialect" value="org.example.ch10.jpql.udf.MyPostgresDialect"/>
+```
+- JPQL을 이용해 함수를 사용할 수 있습니다.
+```java
+public class UserDefinedFunction {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
+        EntityManager em = emf.createEntityManager();
+
+        String query = "SELECT FUNCTION('concat_name' , it.name) FROM Item it";
+        List<String> resultList = em.createQuery(query, String.class).getResultList();
+        resultList.forEach(System.out::println);
+    }
+}
+```
+```text
+Hibernate: 
+    select
+        concat_name(item0_.name) as col_0_0_ 
+    from
+        Item item0_
+ALBUM | NewJeans 1st Album | 10000
+ALBUM | NewJeans 1st Album | 10000
+ALBUM | NewJeans 1st Album | 10000
+ALBUM | NewJeans 1st Album | 10000
+```
+
+### 동적 쿼리와 정적 쿼리
+JPQL은 동적 쿼리와 정적 쿼리로 나뉩니다.
+### 동적쿼리
+`em.createQuery('SELECT ...');`이처럼 문자로 사용하는 것을 동적쿼리라고 합니다.
+런타임에 특정 조건에 따라 JPQL을 동적으로 구성하게 됩니다.
+### 정적쿼리 (Named query)
+미리 정의한 쿼리에 이름을 부여해서 사용하는 것을 정적쿼리라고 합니다.
+애플리케이션 로딩 시점에 JPQL 문법을 체크하고 미리 파싱해둡니다.
+- 어노테이션으로 정의
+  - 쿼리 실행 시 락모드 설정도 가능합니다.
+  - 쿼리 힌트도 사용할 수 있습니다.
+```java
+@Entity
+@NamedQuery(
+        name = "Member.findByName",
+        query = "SELECT m FROM Member m WHERE m.name = :username"
+)
+public class Member {
+    // ...
+}
+```
+```java
+public class NamedQuery {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
+        EntityManager em = emf.createEntityManager();
+
+        List<Member> resultList = em.createNamedQuery("Member.findByName", Member.class)
+                .setParameter("username", "cho").
+                getResultList();
+
+        resultList.forEach(member -> {
+            System.out.println(member.getId() + "번 " + member.getName());
+        });
+    }
+}
+```
+```text
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_,
+        member0_.city as city2_3_,
+        member0_.street as street3_3_,
+        member0_.zipcode as zipcode4_3_,
+        member0_.age as age5_3_,
+        member0_.name as name6_3_,
+        member0_.TEAM_ID as team_id7_3_ 
+    from
+        Member member0_ 
+    where
+        member0_.name=?
+8번 cho
+```
+- XML로 정의
+  - 어노테이션과 다르게 띄어쓰기가 자유롭습니다.
+  - namedQuery.xml
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" version="2.1">
+    <named-query name="Member.findByCity">
+        <query>
+            <![CDATA[
+                SELECT m FROM Member m WHERE m.address.city = :cityName
+            ]]>
+        </query>
+    </named-query>
+</entity-mappings>
+```
+  - persistence.xml 설정 파일
+```xml
+<persistence-unit name="myApp">
+  <mapping-file>META-INF/namedQuery.xml</mapping-file>
+  <!-- 여러가지 설정들 -->
+</persistence-unit>
+```
+```java
+public class NamedQuery {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("myApp");
+        EntityManager em = emf.createEntityManager();
+        
+        List<Member> resultList2 = em.createNamedQuery("Member.findByCity", Member.class)
+          .setParameter("cityName", "seoul")
+          .getResultList();
+        
+        resultList2.forEach(member -> {
+          System.out.println(member.getId() + "번 " + member.getName() + ", 사는곳 : " + member.getAddress().getCity());
+        });
+    }
+}
+```
+
+### Criteria (JPQL 빌더 클래스)
+JPQL을 자바 코드로 작성할 수 있게 도와주는 빌더 클래스 API입니다.
+- 문법 오류를 컴파일 단계에서 잡을 수 있습니다.
