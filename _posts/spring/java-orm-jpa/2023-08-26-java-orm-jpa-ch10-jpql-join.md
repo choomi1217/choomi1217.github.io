@@ -12,7 +12,7 @@ toc_sticky: true
 breadcrumbs: true
 
 date: 2023-08-25
-last_modified_at: 2023-08-27
+last_modified_at: 2023-10-06
 ---
 
 # JPQL 조인
@@ -892,7 +892,3 @@ public class NamedQuery {
     }
 }
 ```
-
-### Criteria (JPQL 빌더 클래스)
-JPQL을 자바 코드로 작성할 수 있게 도와주는 빌더 클래스 API입니다.
-- 문법 오류를 컴파일 단계에서 잡을 수 있습니다.
