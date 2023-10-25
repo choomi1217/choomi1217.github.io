@@ -21,7 +21,7 @@ last_modified_at: 2023-08-25
 
 또한 `@MappedSuperclass` 는 엔티티가 아니고 직접 사용할 일도 없으므로 추상 클래스로 만드는게 좋습니다!
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_5.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_5.png)
 
 ### 재정의 하지 않고 부모의 것 그대로 사용
 
@@ -44,7 +44,7 @@ public class Seller extends BaseEntity{
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_6.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_6.png)
 
 ### 부모의 것 재정의
 
@@ -68,4 +68,4 @@ public class Seller extends BaseEntity {
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_7.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_7.png)

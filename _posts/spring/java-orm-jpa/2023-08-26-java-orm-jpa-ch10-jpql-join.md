@@ -149,7 +149,7 @@ JPQL에서 성능 최적화를 위해 제공하는 기능입니다.
 `Member`의 `Team`을 지연로딩 설정을 해도 `fetch join`을 사용하면 `Member` 조회시 `Team`을 함께 조회합니다.
 프록시가 아닌 실제 엔티티라서 **`Member`가 준영속 상태로 분리 되어도 `Team`을 사용할 수 있습니다.**
 
-![](docs/assets/images/java-orm-jpa/10/jpa_fetch_join.png)
+![](/assets/images/java-orm-jpa/10/jpa_fetch_join.png)
 
 < 코드 >
 ```jpaql
@@ -179,7 +179,7 @@ Hibernate:
 
 ### 컬렉션 fetch 조인
 `Team`을 조회하면 해당된 `Member`들을 함께 조회합니다.
-![](docs/assets/images/java-orm-jpa/10/jpa_collection_fetch_join.png)
+![](/assets/images/java-orm-jpa/10/jpa_collection_fetch_join.png)
 
 < 코드 >
 `TeamA`는 하나밖에 없지만 `TeamA` 에 속한 `Member`가 둘이기 때문에 resultList에 `TeamA`가 둘입니다. 

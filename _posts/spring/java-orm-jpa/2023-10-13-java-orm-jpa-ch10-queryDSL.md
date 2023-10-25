@@ -22,7 +22,7 @@ last_modified_at: 2023-10-13
 `Querydsl JPA`는 프로젝트 내에서 @Entity 애노테이션이 붙은 클래스를 기반으로 **JPAAnnotationProcessor** 를 이용하여 Qclass를 생성합니다. 
 이렇게 생성된 Qclass는 정적코드로 쿼리문을 작성할 수 있게 합니다.
 
-![생성된 Qclass](docs/assets/images/java-orm-jpa/10/qclass.png)
+![생성된 Qclass](/assets/images/java-orm-jpa/10/qclass.png)
 ### gradle 파일
 ```groovy
 

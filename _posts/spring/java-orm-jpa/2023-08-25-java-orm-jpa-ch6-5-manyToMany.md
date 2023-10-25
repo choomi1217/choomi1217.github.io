@@ -25,7 +25,7 @@ DB에선 테이블 두개만으로 표현 할 수 없습니다.
 
 ### ➡️ 단방향
 
-![Untitled](docs/assets/images/java-orm-jpa/6/6_3.png)
+![Untitled](/assets/images/java-orm-jpa/6/6_3.png)
 
 `@JoinTable` 의 속성
 
@@ -175,9 +175,9 @@ public class _1_Test {
     ```
 
 
-![Untitled](docs/assets/images/java-orm-jpa/6/6_4.png)
+![Untitled](/assets/images/java-orm-jpa/6/6_4.png)
 
-![Untitled](docs/assets/images/java-orm-jpa/6/6_5.png)
+![Untitled](/assets/images/java-orm-jpa/6/6_5.png)
 
 ---
 
@@ -269,7 +269,7 @@ product.getMembers().forEach(m -> {
 - 복합키를 사용하는 방법
 - 대리키를 사용하는 방법
 
-![Untitled](docs/assets/images/java-orm-jpa/6/6_6.png)
+![Untitled](/assets/images/java-orm-jpa/6/6_6.png)
 
 ### 💡 복합키를 사용한 관계 테이블 ( 식별관계 )
 
@@ -510,6 +510,6 @@ public class _1_Test {
     ```
 
 
-![Untitled](docs/assets/images/java-orm-jpa/6/6_7.png)
+![Untitled](/assets/images/java-orm-jpa/6/6_7.png)
 
 ### 💡 대리키를 사용한 관계 테이블 ( 비식별 관계 )

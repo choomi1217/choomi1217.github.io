@@ -116,9 +116,9 @@ team name : teamA
 
 ### 로딩 활용
 
-![Untitled](docs/assets/images/java-orm-jpa/8/8_2.png)
+![Untitled](/assets/images/java-orm-jpa/8/8_2.png)
 
-![Untitled](docs/assets/images/java-orm-jpa/8/8_3.png)
+![Untitled](/assets/images/java-orm-jpa/8/8_3.png)
 
 - 내가 생각한 JPA의 작동 방식
   1. *멤버 조회 할 때 팀 같이 조회 👍*

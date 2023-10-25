@@ -46,7 +46,7 @@ last_modified_at: 2023-08-25
 
 왜냐하면 JPA는 영속성 컨텍스트에 엔티티를 보관할 때 엔티티의 식별자를 키로 사용하는데 이 식별자를 구분하기 위해 `equals` 와 `hashCode` 를 사용해 동등성 비교를 합니다.
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_8.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_8.png)
 
 ### @IdClass를 사용한 비식별 복합 키
 
@@ -92,7 +92,7 @@ public class Child{
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_9.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_9.png)
 
 ### @EmbeddedId를 이용한 비식별 복합 키
 
@@ -128,7 +128,7 @@ parent.setId(parentId);
 
 ## 복합 키 : 식별 관계
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_10.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_10.png)
 
 ### @IdClass를 이용한 식별 복합 키
 
@@ -256,7 +256,7 @@ GrandChild findGrandChild = em.find(GrandChild.class, grandChildId);
     ```
 
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_11.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_11.png)
 
 ### @EmbeddedId를 이용한 식별 복합 키
 
@@ -385,13 +385,13 @@ GrandChild grandChild1 = em.find(GrandChild.class, grandChild.getId());
     ```
 
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_12.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_12.png)
 
 ### 단일 키 : 식별 관계
 
 **부모와 자손이 일대일 관계**일때 부모의 PK가 자손의 PK가 되는 단일 키 식별관계를 만들 수 있습니다.
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_13.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_13.png)
 
 ```java
 @Entity
@@ -461,4 +461,4 @@ Hibernate:
         board0_.BOARD_ID=?
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_14.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_14.png)

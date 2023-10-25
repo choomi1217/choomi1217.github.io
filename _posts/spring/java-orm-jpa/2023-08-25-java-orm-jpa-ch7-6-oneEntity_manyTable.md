@@ -62,4 +62,4 @@ board.setContent("content1");
     ```
 
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_16.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_16.png)

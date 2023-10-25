@@ -65,7 +65,7 @@ public class Movie extends Item{
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_1.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_1.png)
 
 - 조인되는 ID 의 컬럼명을 아래와 같이 변경 할 수 있습니다.
 
@@ -79,7 +79,7 @@ public class Book extends Item{
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_2.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_2.png)
 
 ### 2. 단일 테이블 전략
 
@@ -120,7 +120,7 @@ public class Movie extends Item {
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_3.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_3.png)
 
 ### 3. 클래스마다 테이블 전략
 
@@ -155,4 +155,4 @@ public class Movie extends Item {
 }
 ```
 
-![Untitled](docs/assets/images/java-orm-jpa/7/7_4.png)
+![Untitled](/assets/images/java-orm-jpa/7/7_4.png)
