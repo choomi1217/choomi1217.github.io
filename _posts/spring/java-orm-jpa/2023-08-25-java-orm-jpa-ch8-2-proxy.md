@@ -81,7 +81,7 @@ Member proxyMember = em.getReference(Member.class, "cho");
 
 `member.getName()` 처럼 실제 사용될 때 DB를 조회해서 실제 엔티티 객체를 생성합니다.
 
-![Untitled](../image/8/8_1.png)
+![Untitled](docs/assets/images/java-orm-jpa/8/8_1.png)
 
 ### 프록시와 식별자
 

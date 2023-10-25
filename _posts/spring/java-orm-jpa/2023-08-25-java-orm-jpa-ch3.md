@@ -20,7 +20,7 @@ last_modified_at: 2023-08-25
 
 ### 엔티티 매니저 팩토리와 엔티티 매니저
 
-![Untitled](/assets/images/java-orm-jpa/3/3_1.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_1.png)
 
 두개의 엔티티매니저를 생성했음에도 하나는 DB 커넥션을 사용하고 하나는 DB 커넥션을 사용하지 않습니다.
 
@@ -41,7 +41,7 @@ JPA 구현체들은 EntityManagerFactory를 생성할 때 DB 커넥션 풀을 �
 - 준영속 : 영속성 컨텍스트에 저장 되었다가 분리된 상태
 - 삭제 : 엔티티가 삭제된 상태
 
-![Untitled](./image/3/3_2.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_2.png)
 
 ### 영속성 컨텍스트의 특징
 
@@ -78,7 +78,7 @@ em.persist(member);
 
 JPA는 1차 캐시를 이용한 **반복 가능한 읽기** 의 트랜잭션을 애플리케이션 차원에서 제공합니다.
 
-![Untitled](./image/3/3_3.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_3.png)
 
 ### 2. 1차 캐시에서 조회
 
@@ -88,13 +88,13 @@ Member findMember = em.find(Member.class, id);
 
 em.find()를 호출하면 먼저 1차 캐시에서 엔티티를 찾고 1차 캐시에 없으면 DB에서 조회합니다.
 
-![Untitled](./image/3/3_4.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_4.png)
 
 ### 3. DB 조회
 
 만약 `em.find()` 했을 때 1차 캐시에 엔티티가 없으면 **DB를 조회해서 엔티티를 생성 후 캐시에 저장하고 영속 상태의 엔티티를 리턴합니다.**
 
-![Untitled](./image/3/3_5.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_5.png)
 
 ### 영속 엔티티의 동일성 보장
 
@@ -170,11 +170,11 @@ tx.commit();
 emf.close();
 ```
 
-![Untitled](./image/3/3_6.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_6.png)
 
-![Untitled](./image/3/3_7.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_7.png)
 
-![Untitled](./image/3/3_8.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_8.png)
 
 1. `memberA` 를 영속 컨텍스트에 **영속화** 합니다.
 2. 영속성 컨텍스트가 영속화된 `memberA` 를 1차 캐시에 저장함과 동시에 `memberA` 의 insert SQL을 생성해 저장소에 저장합니다.
@@ -258,7 +258,7 @@ Hibernate:
         id=?
 ```
 
-![Untitled](./image/3/3_9.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_9.png)
 
 1. 사용자가 트랜잭션 커밋하면 엔티티 매니저가 flush() 를 호출합니다.
 2. 엔티티와 스냅샷을 비교합니다.
@@ -396,11 +396,11 @@ Hibernate:
         nextval ('hibernate_sequence')
 ```
 
-![Untitled](./image/3/3_10.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_10.png)
 
-![Untitled](./image/3/3_11.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_11.png)
 
-![Untitled](./image/3/3_12.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_12.png)
 
 ### 병합
 
@@ -491,7 +491,7 @@ Entity Manager has MERGED ? true
 FIND AFTER MERGED MEMBER NAME '조영미'
 ```
 
-![Untitled](./image/3/3_13.png)
+![Untitled](docs/assets/images/java-orm-jpa/3/3_13.png)
 
 1. `merge(member)` 를 실행합니다.
 2. 준영속 엔티티의 `@Id` 로 1차 캐시에서 엔티티를 찾습니다.

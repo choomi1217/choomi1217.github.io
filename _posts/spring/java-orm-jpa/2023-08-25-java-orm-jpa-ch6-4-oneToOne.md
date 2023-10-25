@@ -179,7 +179,7 @@ Hibernate:
         (?, ?, ?)
 ```
 
-![Untitled](../image/6/6_1.png)
+![Untitled](docs/assets/images/java-orm-jpa/6/6_1.png)
 
 ## 대상 테이블에 외래 키
 
@@ -293,4 +293,4 @@ Hibernate:
         locker_id=?
 ```
 
-![Untitled](../image/6/6_2.png)
+![Untitled](docs/assets/images/java-orm-jpa/6/6_2.png)

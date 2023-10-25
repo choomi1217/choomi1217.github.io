@@ -48,12 +48,12 @@ last_modified_at: 2023-08-25
     - **회원과 팀은 단방향입니다.**
     - 회원은 팀을 조회 할 수 있지만 팀은 회원을 조회 할 수 없습니다.
 
-![Untitled](./image/5/5_1.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_1.png)
 
 - 테이블 연관관계
     - **회원과 팀은 양방향입니다.**
 
-![Untitled](./image/5/5_2.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_2.png)
 
 ### 연관관계 사용
 
@@ -149,9 +149,9 @@ Hibernate:
         (?, ?, ?)
 ```
 
-![Untitled](./image/5/5_3.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_3.png)
 
-![Untitled](./image/5/5_4.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_4.png)
 
 ### 조회
 
@@ -182,9 +182,9 @@ Player findPlayer = em.find(Player.class, "member1");
 findPlayer.setTeam(team2);
 ```
 
-![Untitled](./image/5/5_5.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_5.png)
 
-![Untitled](./image/5/5_6.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_6.png)
 
 ### 연관관계 삭제
 
@@ -192,9 +192,9 @@ findPlayer.setTeam(team2);
 findPlayer.setTeam(null);
 ```
 
-![Untitled](./image/5/5_7.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_7.png)
 
-![Untitled](./image/5/5_8.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_8.png)
 
 # 💡 양방향 연관관계
 
@@ -202,9 +202,9 @@ Member와 Team은 N:1 관계 → Member.team
 
 Team과 Member는 1:N 관계 → Team.member**s**
 
-![Untitled](./image/5/5_9.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_9.png)
 
-![Untitled](./image/5/5_10.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_10.png)
 
 ```java
 @Entity
@@ -260,7 +260,7 @@ twoWayPlayers.forEach(player -> System.out.println("player = " + player.getUsern
 
 ### 연관관계의 주인은 외래키를 가진 테이블
 
-![Untitled](./image/5/5_11.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_11.png)
 
 ERD를 보면 `TEAM` 은 `MEMBER` 에 대한 정보를 아무것도 가지지 않은 테이블입니다.
 
@@ -286,9 +286,9 @@ em.persist(player1);
 em.persist(player2);
 ```
 
-![Untitled](./image/5/5_12.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_12.png)
 
-![Untitled](./image/5/5_13.png)
+![Untitled](docs/assets/images/java-orm-jpa/5/5_13.png)
 
 ### 순수한 객체까지 고려한 양방향 연관관계 ( 연관관계 편의 메소드 )
 
