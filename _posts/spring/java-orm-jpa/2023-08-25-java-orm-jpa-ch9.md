@@ -23,7 +23,7 @@ JPA **엔티티 타입**과 **값 타입**으로 나눌 수 있습니다.
 엔티티 타입은 식별자를 통해 추적할 수 있지만, 
 값 타입은 식별자가 없고 숫자나 문자같은 속성만 있으므로 추적할 수 없습니다.
 
-![](/assets/images/java-orm-jpa/9/jpa%20값과%20임베디드%20타입.png)
+![](docs/assets/images/java-orm-jpa/9/jpa%20값과%20임베디드%20타입.png)
 ### 기본값 타입
 회원 엔티티에 '근무 시작일, 근무 종료일, 도시, 거리, 우편번호' 이런 데이터가 개별적으로 존재하는 건 응집도가 떨어지고 객체지향적이지 않습니다.
 이를 해결하기 위해 임베디드 타입으로 **근무시간** , **주소** 로 나눠 임베디드 타입으로 하는 것이 좋습니다.
@@ -176,7 +176,7 @@ public class Main {
     }
 }
 ```
-![](/assets/images/java-orm-jpa/9/9_1.png)
+![](docs/assets/images/java-orm-jpa/9/9_1.png)
 
 - 중복된 임베디드 값
 ```java
@@ -254,7 +254,7 @@ Hibernate:
     where
         MEMBER_ID=?
 ```
-![](/assets/images/java-orm-jpa/9/9_2.png)
+![](docs/assets/images/java-orm-jpa/9/9_2.png)
 
 ### 값 복사
 `homeAddress.clone();` clone 메소드를 아무리 오버라이드 해서 객체를 복사해도 근본적인 문제는 해결되지 않습니다.
@@ -507,4 +507,4 @@ Hibernate:
         (?, ?)
 ```
 
-![](/assets/images/java-orm-jpa/9/9_3.png)
+![](docs/assets/images/java-orm-jpa/9/9_3.png)
