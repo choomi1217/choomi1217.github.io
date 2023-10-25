@@ -117,24 +117,24 @@ layout: archive
       </div>
     </div>
 
-<!--    <nav class="nav-menu">-->
-<!--      <ul>-->
-<!--        <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>-->
-<!--        <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>-->
-<!--        <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>-->
-<!--        <li><a href="#services"><i class="bx bx-server"></i>Skill</a></li>-->
-<!--        <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>-->
-
-<!--      </ul>-->
-<!--    </nav>-->
     <nav class="nav-menu">
-      {% assign entries_layout = page.entries_layout | default: 'list' %}
-      <div class="entries-{{ entries_layout }}">
-        {% for post in posts %}
-        {% include archive-single.html type=entries_layout %} <br/>
-        {% endfor %}
-      </div>
+      <ul>
+        <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
+        <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="#services"><i class="bx bx-server"></i>Skill</a></li>
+        <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
+
+      </ul>
     </nav>
+<!--    <nav class="nav-menu">-->
+<!--      {% assign entries_layout = page.entries_layout | default: 'list' %}-->
+<!--      <div class="entries-{{ entries_layout }}">-->
+<!--        {% for post in posts %}-->
+<!--        {% include archive-single.html type=entries_layout %} <br/>-->
+<!--        {% endfor %}-->
+<!--      </div>-->
+<!--    </nav>-->
     <!-- .nav-menu -->
     <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
