@@ -20,7 +20,7 @@ last_modified_at: 2023-08-25
 
 ### 엔티티 매니저 팩토리와 엔티티 매니저
 
-![Untitled](/assets/image/java-orm-jpa/3/3_1.png)
+![Untitled](/assets/images/java-orm-jpa/3/3_1.png)
 
 두개의 엔티티매니저를 생성했음에도 하나는 DB 커넥션을 사용하고 하나는 DB 커넥션을 사용하지 않습니다.
 
