@@ -106,11 +106,11 @@ analytics:
 author:
   name             : "o_omi"
   avatar           : "/assets/images/svg/oomi_color2-cropped.svg"
-  bio              : " 기록을 위한 공간 ✉️"
+  bio              : " 어제보다 더 나은 내일을 위해 <br/> 매일 공부하고 기록하라."
   location         : ""
   email            : "whdudal1217@naver.com"
   website          : "https://choomi1217.github.io/"
-  github           : "choomi1217"
+  github           : "https://github.com/choomi1217"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -269,7 +269,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: false
+      author_profile: true
       read_time: false
       comments: true
       share: true
