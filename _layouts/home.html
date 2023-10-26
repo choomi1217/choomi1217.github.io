@@ -4,8 +4,14 @@ layout: archive
 
 {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
-<h3 class="archive__subtitle"> My Posts </h3>
+{% assign sum = site.posts | size %}
+
+<h3 class="archive__subtitle">
+  <span style="font-family:KCC-Ganpan',KCC-Ganpan,serif;">전체 글 수</style>
+  <span style="font-family:KCC-Ganpan',KCC-Ganpan,serif;">{{sum}}</style>
+  <span style="font-family:KCC-Ganpan',KCC-Ganpan,serif;">개</style>
+</h3>
+<!--<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>-->
 {% if paginator %}
   {% assign posts = paginator.posts %}
 {% else %}
