@@ -1,7 +1,7 @@
 {% if page.author_profile or layout.author_profile or page.sidebar %}
   <div class="sidebar sticky">
     {% if page.author_profile or layout.author_profile %}
-      {% include author-profile.html %}
+      {% include author-profile-custom.html %}
     {% endif %}
     {% if page.sidebar %}
       {% for s in page.sidebar %}
