@@ -7,6 +7,18 @@
         <i class="far {% if include.type == 'grid' and document.read_time and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
         {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
         <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
+        <br/>
+        {% if site.tag_archive.type and page.tags[0] %}
+            {% if site.tag_archive.path %}
+              <i class="fas fa-fw fa-tags" aria-hidden="true"></i>
+              {% assign tags_sorted = page.tags | sort_natural %}
+              {% for tag_word in tags_sorted %}
+              <a href="{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}"
+                 class="page__taxonomy-item p-category" rel="tag">
+                {{ tag_word }}</a>{% unless forloop.last %}<span class="sep">, </span>{% endunless %}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
       </span>
     {% endif %}
 
