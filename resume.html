@@ -1,0 +1,251 @@
+---
+layout: default-resume
+author_profile: true
+sidebar_main: true
+breadcrumbs: false
+---
+
+{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
+  {% include page__hero.html %}
+{% elsif page.header.video.id and page.header.video.provider %}
+  {% include page__hero_video.html %}
+{% endif %}
+
+{% assign breadcrumbs_enabled = site.breadcrumbs %}
+{% if page.breadcrumbs != null %}
+  {% assign breadcrumbs_enabled = page.breadcrumbs %}
+{% endif %}
+{% if page.url != "/" and breadcrumbs_enabled %}
+  {% unless paginator %}
+    {% include breadcrumbs.html %}
+  {% endunless %}
+{% endif %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <div class="archive" style="padding-right: 0;">
+    <!-- 자기소개 섹션 -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h1> 안녕하세요! 저는 조영미입니다.</h1>
+          <h2>  <i class="fas fa-user"></i> About Me</h2>
+        </div>
+        <div class="row">
+          <div class="content">
+            <p>
+              만 3년차 백엔드 개발자로 일하고 있습니다.<br/>
+              블라블라 블라블라 블라블라 블라블라 블라블라 블라블라<br/>
+              블라블라 블라블라 블라블라 블라블라 블라블라 블라블라
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <!-- 내 기술 섹션 -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2> <i class="fas fa-tools"></i> Skills</h2>
+        </div>
+        <!--언어-->
+        <div class="row">
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+            <h4 class="title">
+              <div class="icon"><i class="icofont-computer"></i></div>
+              <a href="">Language</a> <!-- todo -->
+            </h4>
+            <p class="description">
+              Java 17 <br/>
+              JavaScript ES5<br/>
+              Vue.js
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+            <h4 class="title">
+              <div class="icon"><i class="far fa-file-code"></i></div>
+              <a href="">Framework</a> <!-- todo -->
+            </h4>
+            <p class="description">
+              Spring Framework<br/>
+              Spring Boot 3<br/>
+              ORM - Jpa<br/>
+              ORM - MyBatis
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+            <h4 class="title">
+              <div class="icon"><i class="fas fa-database"></i></div>
+              <a href="">DataBase(DB)</a> <!-- todo -->
+            </h4>
+            <p class="description">
+              Oracle<br/>
+              PostgreSQL<br/>
+              MySql
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+            <h4 class="title">
+              <div class="icon"><i class="fas fa-cloud"></i></div>
+              <a href="">Infra</a> <!-- todo -->
+            </h4>
+            <p class="description">
+              Linux <br/>
+              Docker <br/>
+              Jenkins <br/>
+              AWS
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+            <h4 class="title">
+              <div class="icon"><i class="fas fa-globe"></i></div>
+              <a href="">Gis</a> <!-- todo -->
+            </h4>
+            <p class="description">
+              OpenLayers <br/>
+              GeoServer <br/>
+              Qgis
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <!-- 히스토리 섹션 -->
+    <section id="history" class="history">
+      <!-- 교육 개요 -->
+      <div class="resume">
+        <div class="resume-title">
+          <h2>  <i class="fas fa-user"></i> Education </h2>
+        </div>
+        <!-- 교육 1 -->
+        <div class="resume-item">
+          <time>2017.02 - 2022.02 </time>
+          <h4>대전보건대학교 - 컴퓨터정보과 </h4>
+          <ul>
+            <li>
+              Project<br/>
+              <ul>
+                <!-- todo -->
+                <li><a href="" target="_blank">인공지능을 활용한 마스크 감별 시스템</a></li>
+                <li><a href="" target="_blank">라즈베리파이를 이용한 식물 관리 시스템</a></li>
+              </ul>
+            </li>
+            <li>
+              운영체제, 자료구조, 컴퓨터구조, 데이터베이스, 데이터통신, 컴퓨터보안, C언어, 알고리즘 <br/>
+              전공필수 및 개발에 필요한 수업을 이수했습니다.
+            </li>
+          </ul>
+        </div>
+        <!-- 교육2 -->
+        <div class="resume-item">
+          <time>2021.02 - 2021.04</time>
+          <h4 style="text-transform: none;">DBIAN - SQL tunning Class</h4>
+          <ul>
+            <li>
+              <!-- todo -->
+              <a href="/categories/db-performance-advancement"> 오라클 성능 고도화 원리와 해법 </a>
+            </li>
+            <li>
+              블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라.
+            </li>
+            <li>
+              블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!--자격증-->
+      <!-- 간단하게 증명서 날릴만한 서버가 필요할 것 같다 -->
+      <!-- 이걸 AWS로 해보면 어떨가 싶다 -->
+      <br/> <hr/>
+      <div class="resume">
+        <div class="resume-title">
+          <h2>  <i class="fas fa-user"></i> Certificate </h2>
+        </div>
+        <div class="resume-item">
+          <time>2021.11.14</time>
+          <h4>정보처리기사</h4>
+          <!-- todo -->
+          <a href=""> 증명 </a>
+        </div>
+        <div class="resume-item">
+          <time>2021.12.14</time>
+          <h4>SQLD</h4>
+          <!-- todo -->
+          <a href=""> 증명 </a>
+        </div>
+        <div class="resume-item">
+          <time>2019.12.14</time>
+          <h4>컴퓨터활용능력2급</h4>
+          <!-- todo -->
+          <a href=""> 증명 </a>
+        </div>
+      </div>
+      <!--경력-->
+      <br/>
+      <div class="resume">
+        <div class="resume-title">
+          <h2>  <i class="fas fa-user"></i> Career </h2>
+          <div class="resume-item">
+            <time>2021.01 - 2023.05</time>
+            <h4 style="text-transform: none;"> (주) LTMetric  </h4>
+            <li>
+              <a href="https://www.juso.go.kr/openIndexPage.do " target="_blank">주소정보누리집</a> 유지보수 <br/>
+              <ul>
+                <li> "강원도"를
+                  <a href="https://terms.naver.com/entry.naver?docId=6624080&cid=43667&categoryId=43667" target="_blank">
+                    "강원특별자치도"
+                  </a>
+                  로 변경하는 작업 진행 </li>
+                  <ul>
+                    <li> 코드성 데이터 변경시, 지도 변경시 영향도 체크 </li>
+                    <li> 데이터 변경을 위한 스크립트 작성 </li>
+                    <li>
+                      <a href="https://docs.geoserver.org/latest/en/user/styling/webadmin/index.html" target="_blank">
+                        Geoserver Style
+                      </a> 설정
+                    </li>
+                  </ul>
+                <li> 공간데이터 삽입을 위한 백오피스 개발 </li>
+                  <ul>
+                    <li> <a href="https://docs.oracle.com/javadb/10.10.1.2/ref/rrefclob.html" target="_blank">Lob</a>데이터를
+                      <a href="http://postgis.net/workshops/postgis-intro/geometries.html" target="_blank">Geometric</a> 변경 </li>
+                    <li> <a href=""> 상세내용 </a> </li>
+                  </ul>
+                <li> 차세대 사업을 위한 CI/CD 작업 </li>
+                  <ul>
+                    <li> Oracle의 Lob 데이터 > Postgres의 geometric 컬럼으로 데이터 삽입 </li>
+                    <li> 블라블라 </li>
+                    <li> 블라블라 </li>
+                  </ul>
+              </ul>
+            </li>
+          </div>
+          <div class="resume-item">
+            <time>2021.01 - 2023.05</time>
+            <h4 style="text-transform: none;"> (주) LTMetric  </h4>
+            <li>
+              한국 도로명 주소 유지보수 <br/>
+              <ul>
+                <li> "강원도"를 "강원특별자치도"로 변경하는 작업 진행</li>
+                <ul>
+                  <li> 코드성 데이터 변경시 영향도 체크 </li>
+                  <li> 지도 데이터 </li>
+                </ul>
+                <li>라즈베리파이를 이용한 식물 관리 시스템</li>
+              </ul>
+            </li>
+          </div>
+          <div class="resume-item">
+            <time>2017.12.14</time>
+            <h4>컴퓨터활용능력2급</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 히스토리 끝 -->
+  </div>
+</div>
