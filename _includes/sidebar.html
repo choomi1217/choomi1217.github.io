@@ -16,7 +16,14 @@
         {% include nav_list nav=page.sidebar.nav %}
       {% endif %}
     {% endif %}
-
+    <div class="switch_button">
+      {% if page.url == "/resume/" %}
+          <a href="/home"> <i class="fa fa-home"></i> HOME </a>
+      {% endif %}
+      {% if page.url == "/home/" %}
+          <a href="/resume"> <i class="fa fa-address-book"></i> RESUME </a>
+      {% endif %}
+    </div>
     {% if page.sidebar_main %}
       {% include nav_list_main %}
     {% endif %}
