@@ -127,7 +127,6 @@ class Monitor{
 아래처럼 코드를 짜면 `Monitor`에게 **Tell**을 할 수 있습니다. 
 
 ```java
-```java
 class Main{
 
   public static void main(String[] args) {
@@ -165,4 +164,9 @@ class Monitor{
 
 }
 ```
-```
+
+### MVC 패턴에서 mode(도메인)의 view 의존 
+도메인 패키지에 존재하는 객체가 view에 의존하고 있네요
+요구사항에 맞춰서 도메인 패키지가 view 패키지에 의존하지 않도록 개선해 보시면 좋을 것 같아요
+
+
