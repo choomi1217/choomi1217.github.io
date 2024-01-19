@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "o_omi"
   avatar           : "/assets/images/svg/oomi_color2-cropped.svg"
-  bio              : " 어제보다 더 나은 내일을 위해 <br/> 매일 공부하고 기록하라."
+  bio              : " 어제보다 더 나은 내일을 위해 <br/> 공부하고 기록하는 나의 공간입니다."
   location         : ""
   email            : "whdudal1217@naver.com"
   website          : "https://choomi1217.github.io/"
@@ -273,7 +273,7 @@ defaults:
       read_time: false
       comments: true
       share: true
-      related: true
+      related: false
       show_date : true
       sidebar_main: true
 

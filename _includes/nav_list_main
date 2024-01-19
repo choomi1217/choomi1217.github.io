@@ -1,127 +1,115 @@
 {% assign sum = site.posts | size %}
-
 <nav class="nav__list">
   <input id="ac-toc" name="accordion-toc" type="checkbox" />
   <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
   <ul class="nav__items" id="category_tag_menu">
-      <!-- <li>
-           <span style="font-family:KCC-Ganpan',KCC-Ganpan,serif;">전체 글 수</style> <span style="font-family:KCC-Ganpan',KCC-Ganpan,serif;">{{sum}}</style> <span style="font-family:KCC-Ganpan',KCC-Ganpan,serif;">개</style>
-      </li> -->
-      <li>
-        <span class="nav__sub-title">Java</span>
-            <ul>
+      <li class="nav__items__li">
+        <span class="nav__sub-title" onclick="subMenu(event)">Java</span>
+            <ul style="display: none;">
                 {% for category in site.categories %}
                     {% if category[0] == "effective-java" %}
-                        <li><a href="/categories/effective-java" class="">Effective Java({{category[1].size}})</a></li>
+                        <li class="effective-java"><a href="/categories/effective-java">Effective Java({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "java-basic" %}
-                        <li><a href="/categories/java-basic" class="">Java Basic({{category[1].size}})</a></li>
+                        <li class="java-basic"><a href="/categories/java-basic">Java Basic({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">DataBase</span>
-            <ul>
+        </span>
+        <span class="nav__sub-title" onclick="subMenu(event)">DataBase</span>
+            <ul style="display: none;">
                 {% for category in site.categories %}
                     {% if category[0] == "db-performance-advancement" %}
-                        <li><a href="/categories/db-performance-advancement" class="">DB 성능 고도화 원리와 해법({{category[1].size}})</a></li>
+                        <li  class="db-performance-advancement"><a href="/categories/db-performance-advancement">DB 성능 고도화 원리와 해법({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "kind-sql-tunning" %}
-                        <li><a href="/categories/kind-sql-tunning" class="">친절한 sql 튜닝({{category[1].size}})</a></li>
+                        <li class="kind-sql-tunning"><a href="/categories/kind-sql-tunning">친절한 sql 튜닝({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "real-my-sql" %}
-                        <li><a href="/categories/real-my-sql" class="">Reql My SQL({{category[1].size}})</a></li>
+                        <li class="real-my-sql"><a href="/categories/real-my-sql">Real My SQL({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Spring</span>
-            <ul>
+        <span class="nav__sub-title" onclick="subMenu(event)">Spring</span>
+            <ul style="display: none;">
                 {% for category in site.categories %}
                     {% if category[0] == "java-orm-jpa" %}
-                        <li><a href="/categories/java-orm-jpa" class="">java 표준 JPA ({{category[1].size}})</a></li>
+                        <li class="java-orm-jpa"><a href="/categories/java-orm-jpa">java 표준 JPA ({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "spring-self-study" %}
-                        <li><a href="/categories/spring-self-study" class=""> Spring Self Study ({{category[1].size}})</a></li>
+                        <li class="spring-self-study"><a href="/categories/spring-self-study"> Spring Self Study ({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "toby-spring" %}
-                        <li><a href="/categories/toby-spring" class=""> 토비의 스프링 ({{category[1].size}})</a></li>
+                        <li class="toby-spring"><a href="/categories/toby-spring"> 토비의 스프링 ({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "spring-core" %}
-                       <li><a href="/categories/spring-core" class=""> 스프링 핵심 원리 ({{category[1].size}})</a></li>
+                       <li class="spring-core"><a href="/categories/spring-core"> 스프링 핵심 원리 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Toy Project</span>
-          <ul>
+        <span class="nav__sub-title" onclick="subMenu(event)">Toy Project</span>
+          <ul style="display: none;">
               {% for category in site.categories %}
                   {% if category[0] == "neighbor" %}
-                      <li><a href="/categories/neighbor" class=""> 이웃 찾는 사람들 ({{category[1].size}})</a></li>
+                      <li class="neighbor"><a href="/categories/neighbor"> 이웃 찾는 사람들 ({{category[1].size}})</a></li>
                   {% endif %}
                   {% if category[0] == "real-world" %}
-                      <li><a href="/categories/real-world" class=""> real-world ({{category[1].size}})</a></li>
+                      <li class="real-world"><a href="/categories/real-world"> real-world ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
-        <span class="nav__sub-title">Log</span>
-          <ul>
+        <span class="nav__sub-title" onclick="subMenu(event)">Log</span>
+          <ul style="display: none;">
               {% for category in site.categories %}
                   {% if category[0] == "log" %}
-                      <li><a href="/categories/log" class=""> 개발 기록 ({{category[1].size}})</a></li>
+                      <li class="log"><a href="/categories/log"> 개발 기록 ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
-          <ul>
+          <ul style="display: none;">
               {% for category in site.categories %}
                   {% if category[0] == "get-a-job" %}
-                      <li><a href="/categories/get-a-job" class=""> 면접 기록 ({{category[1].size}})</a></li>
+                      <li class="get-a-job"><a href="/categories/get-a-job"> 면접 기록 ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
           </ul>
-        <span class="nav__sub-title">Others</span>
+          <span class="nav__sub-title" onclick="subMenu(event)">CI/CD</span>
+           <ul style="display: none;">
+               {% for category in site.categories %}
+                   {% if category[0] == "git" %}
+                       <li class="git"><a href="/categories/git"> git ({{category[1].size}})</a></li>
+                   {% endif %}
+                   {% if category[0] == "aws-deploy-spring-boot" %}
+                      <li class="aws-deploy-spring-boot"><a href="/categories/aws-deploy-spring-boot"> aws ({{category[1].size}})</a></li>
+                   {% endif %}
+               {% endfor %}
+           </ul>
           <ul>
-            <span class="nav__sub-title">CI/CD</span>
-             <ul>
+            <span class="nav__sub-title" onclick="subMenu(event)">code</span>
+              <ul style="display: none;">
                  {% for category in site.categories %}
-                     {% if category[0] == "git" %}
-                         <li><a href="/categories/git" class=""> git ({{category[1].size}})</a></li>
-                     {% endif %}
-                     {% if category[0] == "aws-deploy-spring-boot" %}
-                        <li><a href="/categories/aws-deploy-spring-boot" class=""> aws ({{category[1].size}})</a></li>
-                     {% endif %}
-                 {% endfor %}
-             </ul>
-          </ul>
-          <ul>
-            <span class="nav__sub-title">code</span>
-              <ul>
-                 {% for category in site.categories %}
-                     {% if category[0] == "cleancode" %}
-                         <li><a href="/categories/cleancode" class=""> 클린코드 ({{category[1].size}})</a></li>
+                     {% if category[0] == "clean-code" %}
+                         <li class="clean-code"><a href="/categories/clean-code"> 클린코드 ({{category[1].size}})</a></li>
                      {% endif %}
                  {% endfor %}
                  {% for category in site.categories %}
                      {% if category[0] == "goodcode-badcode" %}
-                         <li><a href="/categories/goodcode-badcode" class=""> 좋은 코드, 나쁜 코드 ({{category[1].size}})</a></li>
+                         <li class="goodcode-badcode"><a href="/categories/goodcode-badcode"> 좋은 코드, 나쁜 코드 ({{category[1].size}})</a></li>
                      {% endif %}
                  {% endfor %}
                </ul>
           </ul>
           <ul>
-            <span class="nav__sub-title">cs</span>
-              <ul>
+            <span class="nav__sub-title" onclick="subMenu(event)">cs</span>
+              <ul style="display: none;">
                  {% for category in site.categories %}
                      {% if category[0] == "cs-knowledge" %}
-                         <li><a href="/categories/cs-knowledge" class=""> CS의 정석 ({{category[1].size}})</a></li>
+                         <li class="cs-knowledge"><a href="/categories/cs-knowledge"> CS의 정석 ({{category[1].size}})</a></li>
                      {% endif %}
                  {% endfor %}
                </ul>
           </ul>
-
-
       </li>
-      <!-- <li>
-            <br>
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fansohxxn.github.io&count_bg=%23FFCC35&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false">
-      </li> -->
   </ul>
 </nav>
 
