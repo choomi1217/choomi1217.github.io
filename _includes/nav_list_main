@@ -65,8 +65,6 @@
                       <li class="log"><a href="/categories/log"> 개발 기록 ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
-          </ul>
-          <ul style="display: none;">
               {% for category in site.categories %}
                   {% if category[0] == "get-a-job" %}
                       <li class="get-a-job"><a href="/categories/get-a-job"> 면접 기록 ({{category[1].size}})</a></li>
