@@ -25,6 +25,12 @@
                     {% if category[0] == "db-performance-advancement" %}
                         <li><a href="/categories/db-performance-advancement" class="">DB 성능 고도화 원리와 해법({{category[1].size}})</a></li>
                     {% endif %}
+                    {% if category[0] == "kind-sql-tunning" %}
+                        <li><a href="/categories/kind-sql-tunning" class="">친절한 sql 튜닝({{category[1].size}})</a></li>
+                    {% endif %}
+                    {% if category[0] == "real-my-sql" %}
+                        <li><a href="/categories/real-my-sql" class="">Reql My SQL({{category[1].size}})</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         <span class="nav__sub-title">Spring</span>
@@ -38,6 +44,9 @@
                     {% endif %}
                     {% if category[0] == "toby-spring" %}
                         <li><a href="/categories/toby-spring" class=""> 토비의 스프링 ({{category[1].size}})</a></li>
+                    {% endif %}
+                    {% if category[0] == "spring-core" %}
+                       <li><a href="/categories/spring-core" class=""> 스프링 핵심 원리 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -75,6 +84,9 @@
                      {% if category[0] == "git" %}
                          <li><a href="/categories/git" class=""> git ({{category[1].size}})</a></li>
                      {% endif %}
+                     {% if category[0] == "aws-deploy-spring-boot" %}
+                        <li><a href="/categories/aws-deploy-spring-boot" class=""> aws ({{category[1].size}})</a></li>
+                     {% endif %}
                  {% endfor %}
              </ul>
           </ul>
@@ -82,8 +94,23 @@
             <span class="nav__sub-title">code</span>
               <ul>
                  {% for category in site.categories %}
+                     {% if category[0] == "cleancode" %}
+                         <li><a href="/categories/cleancode" class=""> 클린코드 ({{category[1].size}})</a></li>
+                     {% endif %}
+                 {% endfor %}
+                 {% for category in site.categories %}
                      {% if category[0] == "goodcode-badcode" %}
                          <li><a href="/categories/goodcode-badcode" class=""> 좋은 코드, 나쁜 코드 ({{category[1].size}})</a></li>
+                     {% endif %}
+                 {% endfor %}
+               </ul>
+          </ul>
+          <ul>
+            <span class="nav__sub-title">cs</span>
+              <ul>
+                 {% for category in site.categories %}
+                     {% if category[0] == "cs-knowledge" %}
+                         <li><a href="/categories/cs-knowledge" class=""> CS의 정석 ({{category[1].size}})</a></li>
                      {% endif %}
                  {% endfor %}
                </ul>
