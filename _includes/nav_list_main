@@ -28,8 +28,8 @@
                     {% if category[0] == "real-my-sql" %}
                         <li class="real-my-sql"><a href="/categories/real-my-sql">Real My SQL({{category[1].size}})</a></li>
                     {% endif %}
-                    {% if category[0] == "sql-anti-pattern" %}
-                        <li class="sql-anti-pattern"><a href="/categories/sql-anti-pattern">SQL Anti Pattern({{category[1].size}})</a></li>
+                    {% if category[0] == "sql-anti-patterns" %}
+                        <li class="sql-anti-patterns"><a href="/categories/sql-anti-patterns">SQL Anti Pattern({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
