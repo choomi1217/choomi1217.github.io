@@ -1,12 +1,12 @@
 ---
-title: "친절한 SQL 튜닝"
+title: "Atomic Kotlin"
 layout: archive
-permalink: categories/kind-sql-tuning
+permalink: categories/atomic-kotlin
 author_profile: true
 sidebar_main: true
 ---
 
 ***
 
-{% assign posts = site.categories['kind-sql-tuning'] %}
+{% assign posts = site.categories['atomic-kotlin'] %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
