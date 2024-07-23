@@ -13,17 +13,36 @@
                     {% if category[0] == "java-basic" %}
                         <li class="java-basic"><a href="/categories/java-basic">Java Basic({{category[1].size}})</a></li>
                     {% endif %}
+                    {% if category[0] == "modern-java-in-action" %}
+                        <li class="modern-java-in-action"><a href="/categories/modern-java-in-action">모던 자바 인 액션({{category[1].size}})</a></li>
+                    {% endif %}
+                    {% if category[0] == "java-application-test" %}
+                        <li class="java-application-test"><a href="/categories/java-application-test">자바 애플리케이션을 테스트하는 방법({{category[1].size}})</a></li>
+                    {% endif %}
+                    {% if category[0] == "java-orm-jpa" %}
+                        <li class="java-orm-jpa"><a href="/categories/java-orm-jpa">java 표준 JPA ({{category[1].size}})</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </span>
+        <li class="nav__items__li">
+          <span class="nav__sub-title" onclick="subMenu(event)">Kotlin</span>
+              <ul style="display: none;">
+                  {% for category in site.categories %}
+                      {% if category[0] == "atomic-kotlin" %}
+                          <li class="atomic-kotlin"><a href="/categories/atomic-kotlin">Atomic Kotlin({{category[1].size}})</a></li>
+                      {% endif %}
+                  {% endfor %}
+              </ul>
+          </span>
         <span class="nav__sub-title" onclick="subMenu(event)">DataBase</span>
             <ul style="display: none;">
                 {% for category in site.categories %}
                     {% if category[0] == "db-performance-advancement" %}
                         <li  class="db-performance-advancement"><a href="/categories/db-performance-advancement">DB 성능 고도화 원리와 해법({{category[1].size}})</a></li>
                     {% endif %}
-                    {% if category[0] == "kind-sql-tunning" %}
-                        <li class="kind-sql-tunning"><a href="/categories/kind-sql-tunning">친절한 sql 튜닝({{category[1].size}})</a></li>
+                    {% if category[0] == "kind-sql-tuning" %}
+                        <li class="kind-sql-tuning"><a href="/categories/kind-sql-tuning">친절한 sql 튜닝({{category[1].size}})</a></li>
                     {% endif %}
                     {% if category[0] == "real-my-sql" %}
                         <li class="real-my-sql"><a href="/categories/real-my-sql">Real My SQL({{category[1].size}})</a></li>
@@ -36,9 +55,6 @@
         <span class="nav__sub-title" onclick="subMenu(event)">Spring</span>
             <ul style="display: none;">
                 {% for category in site.categories %}
-                    {% if category[0] == "java-orm-jpa" %}
-                        <li class="java-orm-jpa"><a href="/categories/java-orm-jpa">java 표준 JPA ({{category[1].size}})</a></li>
-                    {% endif %}
                     {% if category[0] == "spring-self-study" %}
                         <li class="spring-self-study"><a href="/categories/spring-self-study"> Spring Self Study ({{category[1].size}})</a></li>
                     {% endif %}
@@ -59,6 +75,9 @@
                   {% if category[0] == "real-world" %}
                       <li class="real-world"><a href="/categories/real-world"> real-world ({{category[1].size}})</a></li>
                   {% endif %}
+                  {% if category[0] == "otl" %}
+                      <li class="otl"><a href="/categories/otl"> Oh!TodayLunch ({{category[1].size}})</a></li>
+                  {% endif %}
               {% endfor %}
           </ul>
         <span class="nav__sub-title" onclick="subMenu(event)">Log</span>
@@ -74,7 +93,7 @@
                   {% endif %}
               {% endfor %}
           </ul>
-          <span class="nav__sub-title" onclick="subMenu(event)">CI/CD</span>
+          <span class="nav__sub-title" onclick="subMenu(event)">environment</span>
            <ul style="display: none;">
                {% for category in site.categories %}
                    {% if category[0] == "git" %}
@@ -82,6 +101,9 @@
                    {% endif %}
                    {% if category[0] == "aws-deploy-spring-boot" %}
                       <li class="aws-deploy-spring-boot"><a href="/categories/aws-deploy-spring-boot"> aws ({{category[1].size}})</a></li>
+                   {% endif %}
+                   {% if category[0] == "terraform" %}
+                     <li class="terraform"><a href="/categories/terraform"> terraform ({{category[1].size}})</a></li>
                    {% endif %}
                {% endfor %}
            </ul>
