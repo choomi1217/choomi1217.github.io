@@ -132,6 +132,16 @@
                  {% endfor %}
                </ul>
           </ul>
+          <ul>
+            <span class="nav__sub-title" onclick="subMenu(event)">third-party</span>
+              <ul style="display: none;">
+                 {% for category in site.categories %}
+                     {% if category[0] == "kafka" %}
+                         <li class="kafka"><a href="/categories/kafka"> Apache Kafka ({{category[1].size}})</a></li>
+                     {% endif %}
+                 {% endfor %}
+               </ul>
+          </ul>
       </li>
   </ul>
 </nav>
